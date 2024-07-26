@@ -60,9 +60,9 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
 - messaggio(<ins>id</ins>, testo, mittente, data, \*conversazione)
 
 <h4>Vincoli sui dati</h4>
-1. Vincolo di unicità sulla chiave indirizzo_e-mail dell’entità Venditore
-2. L’attributo posti_disponibili di tratta viene aumentato di uno se viene eliminato un biglietto 
-3. L’attributo posti_disponibili di tratta viene diminuito di uno alla generazione di un biglietto con tratta=tratta.id
+1. Vincolo di unicità sulla chiave indirizzo_e-mail dell’entità Venditore.<br>
+2. L’attributo posti_disponibili di tratta viene aumentato di uno se viene eliminato un biglietto.<br>
+3. L’attributo posti_disponibili di tratta viene diminuito di uno alla generazione di un biglietto con tratta=tratta.id.
   
 # ❗️DISCLAIMER❗️
 Questo progetto è stato sviluppato come parte del corso "Web Applications" presso il Dipartimento di Matematica e Informatica (DeMaCS) dell'Università della Calabria. Essendo un lavoro universitario, potrebbe contenere qualche errore o imprecisione. Accogliamo con piacere qualsiasi feedback e suggerimento per migliorare! Il progetto è stato sviluppato dagli studenti:
