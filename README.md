@@ -35,3 +35,16 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
  		<li>Username: user</li>
    		<li>Password: user</li>
  	</ul>
+
+# 💾 Database 💾
+<h2>Modello Entità-Relazione</h2>
+![Modello e/r](https://github.com/matte18it/Ready2Road/blob/5185a93a9497b45a55fe024dd90017204c4b0714/ModelloERReady2Road.drawio.png)
+
+# ❗️DISCLAIMER❗️
+Questo progetto è stato sviluppato come parte del corso "User Interfaces Design" presso il Dipartimento di Matematica e Informatica (DeMaCS) dell'Università della Calabria. Essendo un lavoro universitario, potrebbe contenere qualche errore o imprecisione. Accogliamo con piacere qualsiasi feedback e suggerimento per migliorare! Il progetto è stato sviluppato dagli studenti:
+<ul>
+  <li>Matteo Canino</li>
+  <li>Pierfrancesco Napoli</li>
+  <li>Fortunato Andrea Gagliardi</li>
+  <li>Francesco Morrone</li>
+</ul>
