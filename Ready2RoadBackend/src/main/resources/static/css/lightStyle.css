@@ -1,0 +1,14 @@
+:root
+{
+    --primary-color: #ED2647;
+    --secondary-color: #ee314f;
+    --shadow-color: #000000;
+    --background-color: #ffffff;
+    --accent-color: #bebebe;
+    --component-color: #4d4d4d;
+    --text-color: #000000;
+    --secondary-text-color: #484848;
+    --captcha-color: #f0f0f0;
+    --border-color: #dee2e5;
+    --tema-invert: 0;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/register.css" rel="stylesheet" type="text/css" />
+    <link id="theme-style" href="css/lightStyle.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/validateSeller.js"></script>
+    <script type="text/javascript" src="js/registerThemeScript.js"></script>
+
+    <!-- Icona -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+<div class="sfondo row">
+    <div class="theme-switch-container">
+        <button class="pulsanteTema" id="theme-switch-btn"><i class="bi bi-moon-fill"></i></button>
+    </div>
+    <div class="col-lg-3 colonna-centrale">
+        <div class="mb-3 align-center">
+            <h1 class="testo">Benvenuto!</h1>
+            <p class="testo">Registra qui la tua azienda</p>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="nome" class="form-control testo" id="nome" placeholder="Nome">
+            <p id="nomeError" class="error-message">Inserisci nome.</p>
+            <p id="nomeUnavailableError" class="error-message">Inserisci un altro nome.</p>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" name="email" class="form-control testo" id="email" placeholder="Email">
+            <p id="emailError" class="error-message">Inserisci un indirizzo email valido.</p>
+            <p id="emailUnavailableError" class="error-message">Email non disponibile.</p>
+        </div>
+
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control testo" id="password" placeholder="Password">
+            <p id="passwordError" class="error-message">Caratteri password</p>
+        </div>
+
+        <div class="mb-3">
+            <input type="password" name="confPassword" class="form-control testo" id="confPassword" placeholder="Conferma Password">
+            <p id="confPasswordError" class="error-message">Le password non corrispondono</p>
+        </div>
+
+        <div class="mb-3 align-right">
+            <button id="btn-register" class="registrati-btn btn btn-primary">Registrati</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
