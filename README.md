@@ -58,9 +58,14 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
 - tappa(<ins>\*tratta</ins>, citta1, citta2, citta3, citta4, citta5, citta6, citta7, citta8, citta9, citta10)
 - conversazione(<ins>nome</ins>, \*username_admin , \*email_utente, \*nome_venditore)
 - messaggio(<ins>id</ins>, testo, mittente, data, \*conversazione)
+
+<h4>Vincoli sui dati</h4>
+1. Vincolo di unicità sulla chiave indirizzo_e-mail dell’entità Venditore
+2. L’attributo posti_disponibili di tratta viene aumentato di uno se viene eliminato un biglietto 
+3. L’attributo posti_disponibili di tratta viene diminuito di uno alla generazione di un biglietto con tratta=tratta.id
   
 # ❗️DISCLAIMER❗️
-Questo progetto è stato sviluppato come parte del corso "User Interfaces Design" presso il Dipartimento di Matematica e Informatica (DeMaCS) dell'Università della Calabria. Essendo un lavoro universitario, potrebbe contenere qualche errore o imprecisione. Accogliamo con piacere qualsiasi feedback e suggerimento per migliorare! Il progetto è stato sviluppato dagli studenti:
+Questo progetto è stato sviluppato come parte del corso "Web Applications" presso il Dipartimento di Matematica e Informatica (DeMaCS) dell'Università della Calabria. Essendo un lavoro universitario, potrebbe contenere qualche errore o imprecisione. Accogliamo con piacere qualsiasi feedback e suggerimento per migliorare! Il progetto è stato sviluppato dagli studenti:
 <ul>
   <li>Matteo Canino</li>
   <li>Pierfrancesco Napoli</li>
