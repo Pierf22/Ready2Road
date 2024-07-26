@@ -36,6 +36,8 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
    		<li>Password: user</li>
  	</ul>
 
+La traccia è disponibile qua: [Traccia](https://github.com/matte18it/Ready2Road/blob/main/A.A.%202023_24%20-%20ModalitaEsame.pdf)
+
 # 💾 Database 💾
 <h2>Progettazione Concettuale</h2>
 
