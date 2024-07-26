@@ -37,10 +37,28 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
  	</ul>
 
 # 💾 Database 💾
-<h2>Modello Entità-Relazione</h2>
+<h2>Progettazione Concettuale</h2>
 
 ![Modello ER](https://github.com/matte18it/Ready2Road/blob/main/ModelloERReady2Road.drawio.png)
 
+<h2>Progettazione Logica</h2>
+
+- admin (<ins>username</ins>, cognome, nome, password)
+- utente (<ins>indirizzo_e-mail</ins>, cognome, nome, data_nascita, password, numero_telefono, ban,  \*id_wallet)
+- venditore (<ins>nome_società</ins>, password, indirizzo_e-mail, ban,  \*id_wallet)
+- wallet (<ins>id</ins>, saldo, punti_acquisto)
+- metodo_di_pagamento (<ins>nome</ins>, \*wallet)
+- buono (<ins><codice, \*nome></ins>, valore)
+- carta_di_pagamento (<ins><numero, \*nome></ins>, cvc, data_di_scadenza)
+- conto_corrente (<ins><iban, \*nome></ins>, banca)
+- transazione (<ins>id</ins>, valore, data_ora, \*metodo_pagamento, \*wallet)
+- biglietto_transazione(<ins><\*id_transazione, \*numero_biglietto></ins>)
+- biglietto (<ins>numero</ins>, posto, prezzo, data_ora_acquisto, scadenza, nome, cognome, cf, \*utente, \*tratta)
+- tratta (<ins>id</ins>, partenza, destinazione, tipo_mezzo, capienza, data_ora, posti_disponibili, prezzo, sconto, numero_biglietti_scontati,  \*nome_venditore)
+- tappa(<ins>\*tratta</ins>, citta1, citta2, citta3, citta4, citta5, citta6, citta7, citta8, citta9, citta10)
+- conversazione(<ins>nome</ins>, \*username_admin , \*email_utente, \*nome_venditore)
+- messaggio(<ins>id</ins>, testo, mittente, data, \*conversazione)
+  
 # ❗️DISCLAIMER❗️
 Questo progetto è stato sviluppato come parte del corso "User Interfaces Design" presso il Dipartimento di Matematica e Informatica (DeMaCS) dell'Università della Calabria. Essendo un lavoro universitario, potrebbe contenere qualche errore o imprecisione. Accogliamo con piacere qualsiasi feedback e suggerimento per migliorare! Il progetto è stato sviluppato dagli studenti:
 <ul>
