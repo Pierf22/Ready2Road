@@ -1,0 +1,34 @@
+<div>
+  <!-- Componente per la ricerca -->
+  <div class="container" id="contRicerca">
+    <div class="input-group mb-3 animate__animated animate__fadeInDown">
+      <span class="input-group-text" id="iconaRicerca"><i class="fa-solid fa-location-dot"></i></span>
+      <input type="text" id="inputTratte" class="form-control" placeholder="Codice tratta" aria-label="Codice tratta" aria-describedby="searchTratta" [(ngModel)]="idTratta">
+    </div>
+    <button type="button" class="btn animate__animated animate__fadeInDown" id="btnRicerca" (click)="getTratta()"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+
+  <div class="container" id="descrizioneTratta">
+    <div id="contTratta">
+      <div id="header-container">
+        <h4>{{ cittaPartenza }} - {{ cittaDestinazione }}</h4>
+        <button class="btn" id="btnBack" (click)="closeTratta()"><i class="fa-solid fa-x"></i></button>
+      </div>
+      <h5>{{ nomeVenditore }}</h5>
+      <div class="orari-container">
+        <p class="orario">{{ dataPartenza }}</p>
+        <div class="linea"></div>
+        <p class="tempo-traccia">{{ stringaOrario }}</p>
+        <p class="orario">{{ dataArrivo }}</p>
+      </div>
+      <div class="etichette-container">
+        <p class="etichetta" style="font-size: 12px;">Partenza</p>
+        <p class="etichetta" style="font-size: 12px;">Arrivo</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mappa -->
+  <div id="map" class="map animate__animated animate__fadeIn"></div>
+</div>
+

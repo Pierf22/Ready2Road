@@ -1,0 +1,179 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  background-color: var(--background-color);
+
+}
+
+#contenitore {
+  display: flex;
+  min-height: 90vh;
+  max-height: 90vh;
+}
+@media (max-width:520px ) {
+  #contenitore {
+    flex-direction: column;
+    max-height: max-content !important;
+  }
+  #singolachat{
+    height: 100vh !important;
+  }
+  #listaConversazioni {
+    min-height: 10% !important;
+    overflow-y: auto;
+  }
+
+}
+
+#listaConversazioni {
+  background-color: var(--component-color);
+  color: var(--text-color);
+  padding: 20px;
+  min-width: 30%;
+  overflow: auto;
+}
+
+#listaConversazioni h4 {
+  font-size: 1.5em;
+  border-bottom: 2px solid var(--primary-color); /* Aggiunto un sottile bordo inferiore */
+  margin-bottom:  20px ; /* Aggiunto margine in basso per separare il titolo dalla lista */
+padding-top: 10px;
+  padding-bottom: 31px; /* Aggiunto spazio tra il testo e il bordo inferiore */
+  letter-spacing: 2px; /* Aggiunto spazio tra le lettere */
+  word-wrap: break-word;
+
+}
+
+
+.conversazione {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+
+.conversazione:hover {
+  background-color: var(--primary-color);
+
+}
+
+#chat {
+  margin-right: 5px;
+  position: relative;
+
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Per garantire che la barra di invio sia in basso */
+
+}
+#contenitoreChat{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+
+}
+#singolachat{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.barra-invio {
+
+  width: 100%;
+  background-color: var(--alert-background); /* Colore di sfondo della barra */
+  padding: 10px;
+  display: flex;
+}
+
+.barra-invio input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px; /* Aggiunto margine a destra tra l'input e il pulsante */
+}
+
+.barra-invio button {
+  padding: 10px 15px;
+  background-color:var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.barra-invio button:hover {
+  background-color: var(--secondary-color);
+}
+/* Stile di base per tutti i messaggi */
+.messaggio {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+/* Stile per i messaggi dell'utente corrente */
+.messaggioMio {
+  background-color:rgb(255, 70, 50); /* Colore di sfondo per i tuoi messaggi */
+  align-self: flex-end; /* Allinea a destra se i messaggi sono in un contenitore flessibile */
+}
+
+/* Stile per i messaggi degli altri utenti */
+.messaggioAltro {
+  background-color: cornflowerblue; /* Colore di sfondo per i messaggi degli altri utenti */
+  align-self: flex-start; /* Allinea a sinistra se i messaggi sono in un contenitore flessibile */
+}
+
+/* Contenitore per tutti i messaggi */
+#messaggi {
+
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+.data {
+  opacity: 0.7; /* Riduci l'opacità della data per renderla meno visibile */
+  font-size: 0.8em; /* Riduci la dimensione del testo della data */
+}
+.testo{
+  font-size: 1.2em; /* Aumenta la dimensione del testo del messaggio */
+}
+.nomePartecipante {
+  margin: 0;
+  background-color: var(--component-color);
+  font-size: 30px; /* Regola la dimensione del carattere a tuo piacimento */
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: bold; /* Rende il testo in grassetto */
+  color: var(--text-color);
+}
+.stato{
+  font-size: 20px;
+  opacity: 0.7;
+}
+#caricamento{
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+
+
+
+
+
+
+

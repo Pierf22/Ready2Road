@@ -1,0 +1,42 @@
+<body>
+
+<div id="contenitore">
+  <section id="listaConversazioni">
+    <h4>Conversazioni di {{nomeUtente}}</h4>
+    <section *ngFor="let conversazione of conversazioni; let i=index">
+      <div class="conversazione"  (click)="selezionaConversazione(i)" >
+        {{conversazioneService.getNomeAltroPartecipanteConv(nomeUtente, conversazione.getNome())}}
+        <img *ngIf="this.conNotifica[i]" width="30" height="30" src="https://img.icons8.com/ios-glyphs/60/228BE6/full-stop--v2.png" alt="full-stop--v2"/>
+
+      </div>
+    </section>
+  </section>
+  <ng-container  *ngIf="convSelezionata!=-1; then singolaChat"></ng-container>
+
+
+</div>
+</body>
+<ng-template #singolaChat>
+  <div id="singolachat">
+  <p class="nomePartecipante">{{getNomeConvSelezionata()}} <br>
+    <span class="stato" >{{this.stato}}</span>
+  </p>
+  <div id="contenitoreChat">
+
+    <section id="chat">
+      <ngx-spinner  color="#ED2647" size="medium" name="caricamentoMessaggi"  type="ball-spin-clockwise-fade-rotating" id="caricamento">Caricamento chat in corso...</ngx-spinner>
+
+      <div id="messaggi" *ngFor="let messaggio of messaggi[convSelezionata]">
+      <div class="messaggio" [ngClass]="{'messaggioMio':messaggioMio(messaggio), 'messaggioAltro':!messaggioMio(messaggio)}">
+        <div class="testo">{{messaggio.getTesto()}}</div>
+        <div class="data">{{conversazioneService.formatData(messaggio.getData())}}</div>
+      </div>
+      </div>
+  </section>
+
+  </div><form [formGroup]="invioMessaggio"  class="barra-invio" (ngSubmit)="inviaMessaggio()">
+    <input formControlName="testoMessaggio" placeholder="Scrivi un messaggio..." />
+    <button type="submit" > <i class="fas fa-paper-plane"></i> </button>
+  </form></div>
+</ng-template>
+

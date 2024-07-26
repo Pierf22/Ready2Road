@@ -1,0 +1,91 @@
+<!-- Vado ad assegnare una regola css al mio div, gli dico di settare come immagine di sfondo quella contenuta in 'currentImage' -->
+<div class="banner animate__animated animate__fadeIn" [style.backgroundImage]="'url(' + currentImage + ')'">
+
+  <!-- In questo div metto la casella di ricerca -->
+  <div class="slogan">
+    <h1 style="color: white !important;">Un mare di avventure, una semplice ricerca!</h1>
+    <div class="container contForm">
+
+      <!-- Qua metto i pulsanti per la scelta del mezzo -->
+      <div class="sceltaMezzo">
+        <button class="mezzo" [style.borderBottomColor]="isActive === 'aereo' ? 'var(--primary-color)' : 'transparent'" [style.color]="isActive === 'aereo' ? 'var(--primary-color)' : 'var(--text-color)'" (click)="setActiveButton('aereo')">
+          <i class="fa-solid fa-plane" style="margin-right: 5px;"></i>Aereo
+        </button>
+        <button class="mezzo" [style.borderBottomColor]="isActive === 'autobus' ? 'var(--primary-color)' : 'transparent'" [style.color]="isActive === 'autobus' ? 'var(--primary-color)' : 'var(--text-color)'" (click)="setActiveButton('autobus')">
+          <i class="fa-solid fa-bus" style="margin-right: 5px;"></i>Autobus
+        </button>
+        <button class="mezzo" [style.borderBottomColor]="isActive === 'treno' ? 'var(--primary-color)' : 'transparent'" [style.color]="isActive === 'treno' ? 'var(--primary-color)' : 'var(--text-color)'" (click)="setActiveButton('treno')">
+          <i class="fa-solid fa-train" style="margin-right: 5px;"></i>Treno
+        </button>
+        <!-- Aggiungo una linea per separare -->
+        <hr class="form-line" style="margin: 0px;">
+      </div>
+
+      <!-- In questo div ci metto la scelta tra andata e andata/ritorno -->
+      <div class="andataRitorno">
+        <button class="ritorno" (click)="setAndataRitorno('a/r')" [style.background-color]="isAndata === 'a/r' ? 'var(--text-color)' : 'transparent'" [style.color]="isAndata === 'a/r' ? 'var(--primary-color)' : 'var(--text-color)'">a/r</button>
+        <button class="andata" (click)="setAndataRitorno('andata')" [style.background-color]="isAndata === 'andata' ? 'var(--text-color)' : 'transparent'" [style.color]="isAndata === 'andata' ? 'var(--primary-color)' : 'var(--text-color)'">Solo andata</button>
+      </div>
+
+      <!-- Form vero e proprio -->
+      <div id="formPr">
+        <div style="display: flex; flex-wrap: wrap;">
+          <!-- Primo blocco - Scelta Citta di Partenza e di Arrivo -->
+          <div class="input-group citta">
+            <div class="form-floating">
+              <select class="form-select partenza" id="partenza" [(ngModel)]="testoPartenza" (change)="getDestinazioni()">
+                <option value="" disabled selected></option>
+                <option *ngFor="let opzione of opzioniSelectPartenza" [value]="opzione">{{ opzione }}</option>
+              </select>
+              <label for="partenza">Partenza</label>
+            </div>
+            <div>
+              <button class="btn btn-secondary" type="button" id="change"><i class="fa-solid fa-left-right" [@rotateAnimation]="rotateState" (click)="handleButtonClick()" (@rotateAnimation.done)="onAnimationEnd()"></i></button>
+            </div>
+            <div class="form-floating">
+              <select class="form-select arrivo" id="destinazione" [(ngModel)]="testoDestinazione">
+                <option *ngFor="let opzione of opzioniSelectDestinazione" [value]="opzione">{{ opzione }}</option>
+              </select>
+              <label for="destinazione" style="">Destinazione</label>
+            </div>
+          </div>
+
+          <!-- Secondo blocco - Scelta data di andata e ritorno -->
+          <div class="input-group mb-3 data">
+            <div class="form-floating">
+              <input type="date" class="form-control dataPartenza" id="andata" aria-describedby="Andata" [(ngModel)]="dataPartenza" (change)="checkPartenza()">
+              <label for="andata">Andata il</label>
+            </div>
+
+            <div class="form-floating" *ngIf="isAndata === 'a/r'">
+              <input type="date" class="form-control dataRitorno" id="ritorno" aria-describedby="Ritorno" [(ngModel)]="dataRitorno" (change)="checkRitorno()">
+              <label for="ritorno">Ritorno il</label>
+            </div>
+          </div>
+
+          <!-- Terzo blocco - passeggeri -->
+          <div class="input-group mb-3 passeggeri">
+            <div class="form-floating">
+              <input type="text" class="form-control" placeholder="Passeggeri" aria-label="Passeggeri" aria-describedby="basic-addon2" id="pass" [(ngModel)]="nPasseggeri" readonly>
+              <label for="pass">Passeggeri</label>
+            </div>
+            <button class="input-group-text btnPass" id="basic-addon1" (click)="removePasseggero()">-</button>
+            <button class="input-group-text btnPass" id="basic-addon2" (click)="addPasseggero()">+</button>
+          </div>
+
+          <!-- Quarto Blocco - bottone ricerca -->
+          <div class="ricerca">
+            <button type="button" class="btn" id="btnRicerca" (click)="ricerca()"><i class="fa-solid fa-magnifying-glass"></i> {{ testoBottone }} </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- In questo div metto la descrizione del luogo di sfondo -->
+  <div class="description">
+    <h3>Ti piace quello che vedi?</h3>
+    <p>{{ description }}</p>
+  </div>
+</div>

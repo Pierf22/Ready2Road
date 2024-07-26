@@ -1,0 +1,41 @@
+.cardBiglietto {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 16px;
+  background-color: var(--accent-color);
+}
+
+.dati-biglietto {
+  background-color: var(--component-color);
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.dati-c1{
+  font-size: 20px;
+}
+
+.btn-scarica, .btn-scarica:visited, .btn-scarica:link, .btn-scarica:active{
+  font-size: 25px;
+  margin: 10px;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+html, body{
+  height: 100%;
+}
+
+.sfondo{
+  min-height: 80vh;
+  background-color: var(--background-color);
+}
+
+.text{
+  color: var(--text-color);
+}
+
+.errore{
+  color: var(--primary-color);
+}

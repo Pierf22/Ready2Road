@@ -1,0 +1,46 @@
+<div class="principale animate__animated animate__fadeIn">
+  <div class="changeData">
+    <div>
+      <h3><strong>Modifica i tuoi dati</strong></h3>
+    </div>
+
+    <div *ngIf="isUtente()">
+      <div>
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control inputCustom" value="{{ email }}" name="email" disabled>
+      </div>
+      <div style="margin-top: 10px;">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control inputCustom" name="nome" [(ngModel)]="nome" required>
+      </div>
+      <div style="margin-top: 10px;">
+        <label class="form-label">Cognome</label>
+        <input type="text" class="form-control inputCustom" name="cognome" [(ngModel)]="cognome" required>
+      </div>
+      <div style="margin-top: 10px;">
+        <label class="form-label">Data di nascita</label>
+        <input type="date" class="form-control inputCustom" name="dataNascita" [(ngModel)]="dataNascita" required>
+      </div>
+      <div style="margin-top: 10px;">
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control inputCustom" name="telefono" [(ngModel)]="telefono" required>
+      </div>
+    </div>
+
+    <div *ngIf="isVenditore()">
+      <div>
+        <label class="form-label">Nome Società</label>
+        <input type="text" class="form-control inputCustom" value="{{ nome }}" name="nomeSocieta" disabled>
+      </div>
+      <div style="margin-top: 10px;">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control inputCustom" name="email" [(ngModel)]="email" required>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 15px;">
+      <button class="btn btn-primary" id="btn1" (click)="confermaModifiche()">Modifica</button>
+      <button id="btn2" class="btn btn-primary" style="margin-left: 20px;" (click)="confermaAnnulla()">Annulla</button>
+    </div>
+  </div>
+</div>

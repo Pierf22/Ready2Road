@@ -1,0 +1,22 @@
+<body>
+<nav role="navigation" [formGroup]="searchForm" >
+    <input type="search" class="searchButtons" formControlName="partenza" placeholder="Partenza">
+    <input type="search" class="searchButtons" formControlName="arrivo" placeholder="Destinazione">
+    <input type="search" class="searchButtons" formControlName="nomeSocieta" placeholder="Nome Vettore">
+
+</nav>
+<div class="tratte" [ngClass]="{'selected':showOptions[i]}" *ngFor="let partenza of partenze; let i=index " (click)="visualizzaVenditori(partenza,arrivi[i], i )">
+  <span>Tratta {{ partenza }} - {{ arrivi[i] }}</span><i class="fa-solid fa-chevron-down arrow"  [ngClass]="{'frecciaSu':showOptions[i]}"></i>
+  <section class="vettori" *ngIf="showOptions[i]">
+    <div class="unVenditore" *ngFor="let venditore of venditori[i]; let j=index" (click)="accediAlleTratte(venditore, partenza, arrivi[i]); $event.stopPropagation();">
+      {{ venditore}}
+
+
+    </div>
+  </section>
+
+</div>
+
+
+
+</body>

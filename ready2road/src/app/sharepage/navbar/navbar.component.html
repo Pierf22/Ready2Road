@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="seUtente() || (!seUtente() && !seAdmin() && !seVenditore()) ? '' : null" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" [ngClass]="{'disabled-link': !seUtente()}">
+      <img src="../../../assets/img/logo.png" alt="Ready2Road Logo">
+    </a>    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="text-align: end;">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="toggleTheme()" style="cursor: pointer;">Tema <i class="fa-solid fa-moon" id="theme"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seAdmin() || seVenditore()" routerLink="dashboard" routerLinkActive="active-link">Dashboard <i class="fa-solid fa-chart-line"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seVenditore()" routerLink="caricaservizi" routerLinkActive="active-link">Carica Servizi <i class="fa-solid fa-ticket"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seUtente()" routerLink="imieibiglietti" routerLinkActive="active-link">I miei biglietti <i class="fa-solid fa-ticket"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seUtente() || seVenditore()" routerLink="portafoglio" routerLinkActive="active-link">Portafoglio <i class="fa-solid fa-wallet"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seAdmin()" routerLink="utenti" routerLinkActive="active-link">Gestione utenti <i class="fa-solid fa-users"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seAdmin()" routerLink="tratte" routerLinkActive="active-link">Gestione tratte  <i class="fa-solid fa-gauge-high"></i> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="seAdmin() || seVenditore()" routerLink="chatdashboard" routerLinkActive="active-link">Supporto clienti  <i class="fa-solid fa-headset"></i> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="tracciamento" routerLinkActive="active-link">Tracciamento <i class="fa-solid fa-map-pin"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link click-elem" *ngIf="seUtente() || seVenditore() || (name == 'Login' && !seAdmin())" [href]="name === 'Login' ? 'http://localhost:8080/login' : '/areapersonale'">{{name}} <i class="fa-solid fa-circle-user"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="check" style="cursor: pointer;" (click)="this.logout()">Logout <i class="fa-solid fa-sign-out"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

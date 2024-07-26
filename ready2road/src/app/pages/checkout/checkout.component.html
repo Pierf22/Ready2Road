@@ -1,0 +1,23 @@
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+   <div class="list">
+    <section class="listElement" *ngFor="let biglietto of bigliettoData let i = index">
+      <div class="form-group cardBiglietto">
+        <label>Biglietto {{i+1}}</label>
+        <label for="nome{{i}}">Nome</label>
+        <input type="text" class="form-control" id="nome{{i}}" placeholder="Nome">
+        <label for="cognome{{i}}">Cognome</label>
+        <input type="text" class="form-control" id="cognome{{i}}" placeholder="Cognome">
+        <label for="CF{{i}}">Codice Fiscale</label>
+        <input type="text" class="form-control" id="CF{{i}}" placeholder="Codice Fiscale">
+      </div>
+    </section>
+  </div>
+    <div class="row">
+        <div class="form-group col-10 sconto">
+            <label for="sconto">Hai un codice sconto?</label>
+            <input type="text" class="form-control" id="sconto" placeholder="Codice Sconto" (blur)="prendiCodiceSconto()">
+        </div>
+
+        <button class="btn btn-primary col-1 invia" (click)="inviaDati()">Acquista</button>
+    </div>
+</div>

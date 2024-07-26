@@ -1,0 +1,79 @@
+
+<body>
+  <h1 >Dashboard di {{nomeUtente}}</h1>
+
+  <div class="list">
+<section class="listElement" id="utentiTotali">
+  <p  class="mediumText"><i class="fa-solid fa-user-group immagineLista"></i>
+    <span *ngIf="eAdmin()"> Utenti totali </span>
+    <span *ngIf="eVenditore()"> Clienti totali </span><br>
+    {{utentiTotali}}
+</section>
+<section class="listElement" id="venditoriTotali">
+  <p class="mediumText"><i class="fa-solid fa-user-tie immagineLista"></i>
+    <span *ngIf="eAdmin()"> Venditori totali </span>
+    <span *ngIf="eVenditore()"> Tratte offerte </span> <br>
+    {{venditoriTotali}}
+</section>
+  <section class="listElement" id="bigliettiVenduti">
+    <p class="mediumText"><i class="fa-solid fa-receipt immagineLista"></i>
+      Biglietti venduti <br>
+      {{bigliettiVenduti}}
+  </section>
+  <section class="listElement" id="transazioniEffettuate">
+    <p class="mediumText"><i class="fa-solid fa-credit-card immagineLista"></i>
+      <span *ngIf="eAdmin()"> Transazioni effettuate </span>
+      <span *ngIf="eVenditore()">Transazioni effettuate<br>dal wallet</span><br>
+        {{transazioniEffettuate}}
+  </section>
+
+
+    <section class="listElement" id="caricaOfferte" *ngIf="eVenditore()" (click)="router.navigate(['/caricaOfferte'])">
+      <p class="mediumText"><i class="fa-solid fa-percentage immagineLista"></i>
+        Carica offerte <br>
+    </section>
+
+
+  </div>
+  <div id="chart-container">
+  <section class="chart"  [ngClass]="{ 'chart-visible': bigliettiChart }"> <span *ngIf="eAdmin()"> Metodo di pagamento degli utenti </span>
+    <span *ngIf="eVenditore()">Vendite di biglietti</span>
+    <i (click)="mostraBigliettiChart()" class="fa-solid fa-chevron-down chartChevron"></i>
+    <div *ngIf="bigliettiChart && eAdmin()" >
+  <metodi-di-pagamento-pie-chart></metodi-di-pagamento-pie-chart>
+    </div>
+    <div *ngIf="bigliettiChart && eVenditore()" >
+      <app-biglietti-chart [nomeVenditore]="nomeUtente"></app-biglietti-chart>
+    </div>
+
+  </section>
+  <section class="chart"  [ngClass]="{ 'chart-visible': venditeChart }">  <span *ngIf="eAdmin()"> Vendite annuali di ogni venditore </span>
+    <span *ngIf="eVenditore()">Vendite annuali</span>
+    <i (click)="mostraVenditeChart()" class="fa-solid fa-chevron-down chartChevron"></i>
+    <div *ngIf="venditeChart && eAdmin()" >
+      <app-vendite-line-chart></app-vendite-line-chart>
+    </div>
+    <div *ngIf="venditeChart && eVenditore()" >
+      <app-vendite-singolo-venditore-chart [nomeVenditore]="nomeUtente"></app-vendite-singolo-venditore-chart>
+    </div>
+  </section>
+
+</div>
+  <section class="chart"  id="rendite" [ngClass]="{ 'chart-visible': guadagniChart }">  <span *ngIf="eAdmin()"> Rendimento sito web </span>
+    <span *ngIf="eVenditore()">Rendimento</span>
+    <i (click)="mostraGuadagniChart()" class="fa-solid fa-chevron-down chartChevron"></i>
+    <div *ngIf="guadagniChart && eAdmin()" >
+      <app-guadagni-line-chart></app-guadagni-line-chart>
+
+    </div>
+    <div *ngIf="guadagniChart && eVenditore()" >
+      <app-guadagni-venditore-chart  [nomeVenditore]="nomeUtente"></app-guadagni-venditore-chart>
+
+    </div>
+  </section>
+</body>
+
+
+
+
+

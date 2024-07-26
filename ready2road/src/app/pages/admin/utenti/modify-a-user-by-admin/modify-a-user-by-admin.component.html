@@ -1,0 +1,57 @@
+<body>
+<p>Modifica utente</p>
+<i class="fa-solid fa-x" id="chiudiFinestra" (click)="chiudiFinestra()"></i>
+<form [formGroup]="userCreationForm" (submit)="submitModifica()" id="formModificaUtente">
+
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" [ngClass]="{'invalid-form' : nome?.invalid}" formControlName="nome" placeholder="Nome" class="opzioni" >
+  <ng-template  *ngIf="nome?.hasError('required'); then CampoVuoto"></ng-template>
+
+  <label for="cognome" class="opzioni-label">Cognome</label>
+  <input type="text" [ngClass]="{'invalid-form' : cognome?.invalid}" id="cognome" formControlName="cognome" placeholder="Cognome" class="opzioni" >
+  <ng-template  *ngIf="cognome?.hasError('required'); then CampoVuoto"></ng-template>
+
+  <label for="numeroTelefono" class="opzioni-label">Numero di telefono</label>
+  <input type="tel" [ngClass]="{'invalid-form' : numeroTelefono?.invalid}" id="numeroTelefono" formControlName="numeroTelefono" placeholder="Numero telefonico" class="opzioni" >
+  <ng-template  *ngIf="numeroTelefono?.hasError('required'); then CampoVuoto"></ng-template>
+
+  <label for="dataNascita" class="opzioni-label">Data di nascita</label>
+  <input type="date" [ngClass]="{'invalid-form' : dataNascita?.invalid}"  max="{{this.today | date:'yyyy-MM-dd'}}" id="dataNascita" formControlName="dataNascita" placeholder="gg/mm/aaaa" class="opzioni" >
+  <ng-template  *ngIf="dataNascita?.hasError('required'); then CampoVuoto"></ng-template>
+
+  <label for="email" class="opzioni-label">Email</label>
+  <input type="email" [ngClass]="{'invalid-form' : email?.invalid}" id="email" formControlName="email" placeholder="Email" class="opzioni" required>
+  <ng-template  *ngIf="email?.hasError('required'); then CampoVuoto"></ng-template>
+  <small class="messaggiErrore" *ngIf="userCreationForm.get('email')?.hasError('pattern')">Email in formato errato</small>
+  <small class="messaggiErrore" *ngIf="userCreationForm.get('email')?.hasError('emailOccupata')">L'email è già di un'altro utente</small>
+
+  <label for="password" class="opzioni-label">Password</label>
+  <div class="bottonePassword">
+  <input type="{{mostraPassword ? 'text' : 'password'}}" [ngClass]="{'invalid-form' : password?.invalid}" id="password" formControlName="password" placeholder="Password" class="opzioni" required>
+    <i *ngIf="mostraPassword" (click)="mostraPasswordToggle()" class="fa-solid fa-eye iconaPassowrd"></i>
+    <i (click)="mostraPasswordToggle()" *ngIf="!mostraPassword" class="fa-solid fa-eye-slash iconaPassowrd"></i>
+  </div>
+  <ng-template  *ngIf="password?.hasError('required'); then CampoVuoto"></ng-template>
+  <small *ngIf="password?.hasError('pattern')" class="messaggiErrore" >La password deve avere almeno 8 caratteri, di cui uno minuscolo, uno maiuscolo, un numero ed un carattere speciale</small>
+
+
+  <label for="password" class="opzioni-label">Conferma password</label>
+  <div class="bottonePassword">
+  <input type="{{mostraPasswordConferma ? 'text' : 'password'}}" [ngClass]="{'invalid-form' : passwordConferma?.invalid || password?.value!=passwordConferma?.value}" id="passwordConferma" formControlName="passwordConferma" placeholder="Password" class="opzioni" required>
+    <i *ngIf="mostraPasswordConferma" (click)="mostraPasswordConfermaToggle()" class="fa-solid fa-eye iconaPassowrd"></i>
+    <i (click)="mostraPasswordConfermaToggle()" *ngIf="!mostraPasswordConferma" class="fa-solid fa-eye-slash iconaPassowrd"></i>
+  </div>
+    <ng-template  *ngIf="passwordConferma?.hasError('required'); then CampoVuoto"></ng-template>
+  <small class="messaggiErrore" *ngIf="password?.value!=passwordConferma?.value">Password e Conferma Password devono essere uguali</small>
+
+
+  <button type="submit" id="submitButton" class="opzioni"  [disabled]="formDisabilitato()">Modifica un utente</button>
+
+
+
+</form>
+<ng-template #CampoVuoto>
+  <small class="messaggiErrore" >Non è possibile lasciare il campo vuoto</small>
+
+</ng-template>
+</body>

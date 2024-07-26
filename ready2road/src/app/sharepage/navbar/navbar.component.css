@@ -1,0 +1,116 @@
+.navbar-light .navbar-nav .nav-link
+{
+  color: var(--secondary-text-color);
+}
+
+.navbar-light .navbar-nav .nav-link.active-link
+{
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  width: 80px; /* Regola la larghezza desiderata */
+  height: auto; /* Impedisce la distorsione dell'immagine */
+}
+ul.navbar-nav li.nav-item a.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+:host {
+}
+
+.modal {
+}
+
+.click-elem{
+  cursor: pointer;
+}
+
+.navbar {
+  z-index: 2;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Aggiungo ombreggiatura */
+}
+
+.form-floating{
+  margin: 10px 10px;
+}
+
+.modal-content {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.input-group-text, .form-control {
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: transparent;
+}
+
+.form-floating input:focus{
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-floating input::placeholder{
+  color: var(--accent-color);
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.form-control.has-error{
+  background: var(--primary-color);
+}
+
+.form-floating > input + label:after {
+  background: transparent;
+}
+
+.form-floating label {
+  color: var(--text-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.link {
+  font-size: medium;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.registrati {
+  padding-left: 0;
+}
+
+.link:hover {
+  color: var(--secondary-color);
+}
+
+.text {
+  color: var(--text-color);
+}
+
+.modal-header, .modal-footer {
+  border-color: var(--accent-color);
+}
+
+.error-message {
+  padding-left: 7px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.navbar-toggler{
+  background-color: var(--component-color);
+}

@@ -1,0 +1,262 @@
+
+.numeroUtenti{
+  color: var(--text-color);
+    display: block;
+    font-size: 30px;
+    margin: 0 1% 1% 5%;
+  padding-top: 1%;
+
+    text-align: start;
+
+}
+
+#buttonGroupUsers{
+    margin-left: 4%;
+    margin-right: 5%;
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: center;
+    max-height: 200px;
+    align-content: center;
+    text-align: center;
+
+}
+
+.buttonGroupComponent{
+  border: 1px solid black;
+  background-color: var(--component-color);
+  color: var(--text-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin: 2% 2% 2% 2%;
+    max-width: 200px;
+  min-width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.buttonGroupComponent:hover{
+  background-color: var(--primary-color);
+}
+body{
+
+  background-color: var(--accent-color);
+  display: block;
+  flex-direction: column;
+  height: auto;
+}
+.tabellaUtenti{
+  margin-top: 5%;
+  width: 100%;
+  text-align: center;
+  height: auto;
+}
+th{
+  background-color: var(--primary-color);
+
+}
+td{
+  background-color: var(--component-color);
+}
+.modificaUtente{
+  text-decoration: underline; /* Aggiunge un'ulteriore sottolineatura al testo */
+  cursor: pointer; /* Cambia il cursore quando si passa sopra al testo */
+}
+.modificaUtente:hover{
+  color: var(--primary-color) !important;
+}
+@media (max-width: 1200px){
+  .colonneDaNasconere{
+    display: none;
+  }
+
+}
+@media (max-width: 660px) {
+  #tabellaUtenti{
+    margin-top: 50px;
+  }
+    .numeroUtenti{
+    margin-bottom: 5%;
+
+  }
+    .options-container{
+    margin-bottom: -18%;
+    }
+
+
+  #buttonGroupUsers{
+
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .thWithImage{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  th {
+    vertical-align: top;
+  }
+
+
+
+
+
+
+
+
+}
+.tabellaUtenti th, .tabellaUtenti td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  color: var(--text-color);
+
+}
+
+.thWithImage {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
+th p {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+
+
+
+.ordinamentoImage{
+  float: right;
+  margin: 1% 1% 1% 1%;
+  font-size: 40px;
+  color: var(--text-color);
+  padding-left: 10px;
+}
+
+.thWithImage{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.ListofUsers{
+  font-size: 150%;
+
+}
+td{
+  border: 1px solid;
+  height: 60px;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+#utenteModificatoMessaggio{
+    font-size: 30px;
+}
+
+
+
+.caricaAltro {
+  font-size: 25px;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  border-radius: 4px;
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+
+}
+.caricaAltro:hover {
+  background-color:var(--secondary-color) ;
+}
+.caricaAltro.disabled {
+  background-color: var(--component-color);
+  color: var(--secondary-text-color);
+  cursor: default;
+}
+tr{
+  background-color: white;
+}
+#selezionaUnTipoDiUtente:hover{
+  background-color: var(--primary-color);
+}
+.banp{
+
+  background-color: red;
+  border-radius: 5%;
+  font-size: 20px;
+  margin: 10% 10%;
+
+}
+
+
+.frecciaSu{
+    transform: rotate(180deg);
+}
+.frecciaOptions{
+  transition: transform 0.8s;
+  font-size: 30px;
+}
+#selezionaUnTipoDiUtente{
+    position: relative;
+    display: grid;
+    grid-template-areas:
+    'col1 col2'
+    'col3 col3'; /* La seconda riga ha solo una colonna */
+    align-items: center;
+    cursor: pointer;
+    justify-items: center;
+
+
+}
+.frecciaOptions{
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+
+}
+.options-container{
+  background-color: var(--component-color);
+    border-top: none;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  position: absolute;
+    top: 0;
+    left: -6%;
+    bottom: 0;
+    right: 0;
+    margin-top: 5%;
+    padding-bottom: 35%;
+    grid-area: col3;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: 100%;
+    min-width: 200px;
+
+}
+.options:hover{
+  background-color: var(--secondary-color);
+    cursor: pointer;
+}
+.options{
+    min-height: 30px;
+
+text-align: left ;
+    padding-left: 15%;
+
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+<body>
+<div class="titleContainer">
+
+  <i class="fa-solid fa-x" id="chiudiFinestra" (click)="chiudiFinestra()"></i>
+  <span>Tratta {{partenza}} - {{arrivo}} coperte da {{nomeSocieta}}</span>
+</div>
+<div id="buttons" [formGroup]="ricercaForm"><div><input type="checkbox" (change)="mostraVecchieTratte=!mostraVecchieTratte"> Mosta solo tratte future</div>
+  <div>Data inizio <input type="date" class="datad" formControlName="dataInizio" [max]="dataFine?.value"> </div><div>Data fine <input type="date" class="datad" [min]="dataInizio?.value" formControlName="dataFine"></div></div>
+<div id="tratte">
+  <div *ngFor="let tratta of tratteFiltrate; let i=index" class="tratta" [ngClass]="{ 'disabilitato': isDataOraPassata(tratta.getData_ora()), 'nascosto': isDataOraPassata(tratta.getData_ora()) && !mostraVecchieTratte}">
+    <ng-container  *ngIf="!trattaInModifica[i]">
+      <p>ID: {{ tratta.getId() }}</p>
+      <p>Data partenza: {{ tratta.getData_ora() | date:'dd/MM/yyyy' }}</p>
+      <p>Ora partenza: {{ tratta.getData_ora() | date:'HH:mm:ss' }}</p>
+      <p>Capienza: {{ tratta.getCapienza() }}</p>
+      <p>Posti disponibili: {{ tratta.getPosti_disponibili() }}</p>
+      <p>Tipo mezzo: {{tratta.getTipo_mezzo()}}</p>
+      <p>Prezzo: {{tratta.getPrezzo()}}€</p>
+      <p>Sconto: {{tratta.getSconto()}}%</p>
+      <p>Numero di biglietti scontati: {{tratta.getBiglietti_scontati()}}</p>
+      <div class="azioni">
+        <button class="modifica" (click)="modificaTratta( i)" [ngClass]="{ 'disabilitato-bottoni': isDataOraPassata(tratta.getData_ora()) }">Modifica</button>
+        <button class="elimina" (click)="eliminaTratta(i)" [ngClass]="{ 'disabilitato-bottoni': isDataOraPassata(tratta.getData_ora()) }">Elimina</button>
+      </div>
+    </ng-container>
+    <ng-container  *ngIf="trattaInModifica[i]">
+      <form class="form" [formGroup]="trattaModificaForm" (ngSubmit)="salvaModifiche(i)">
+        <div class="opzione">
+          <label for="idTratta">ID:</label>
+          <input type="text" class="bottoni" [ngClass]="{'invalid-form' : id?.invalid}" id="idTratta" name="idTratta" formControlName="id"> </div>
+        <ng-template  *ngIf="id?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="id?.hasError('pattern')" class="messaggiErrore" >Sono consentiti solo numeri e lettere</small>
+        <div class="opzione">
+          <label for="partenzaTratta">Partenza:</label>
+          <input type="text" class="bottoni" [ngClass]="{'invalid-form' : partenzaTratta?.invalid}" id="partenzaTratta" name="partenzaTratta" formControlName="partenza"></div>
+        <ng-template  *ngIf="partenzaTratta?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="partenzaTratta?.hasError('pattern')" class="messaggiErrore" >Sono consentiti solo  lettere</small>
+        <div class="opzione">
+          <label for="destinazioneTratta">Arrivo:</label>
+          <input type="text" class="bottoni" [ngClass]="{'invalid-form' : destinazioneTratta?.invalid}" id="destinazioneTratta" name="destinazioneTratta" formControlName="destinazione"></div>
+        <ng-template  *ngIf="destinazioneTratta?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="destinazioneTratta?.hasError('pattern')" class="messaggiErrore" >Sono consentiti solo  lettere</small>
+        <div class="opzione">
+          <label for="dataTratta">Data partenza:</label>
+          <input type="date"  class="bottoni" min="{{this.today | date:'yyyy-MM-dd'}}" id="dataTratta" name="dataTratta" [ngClass]="{ 'warning-form': dataPartenza?.hasError('dataOrdinata'), 'invalid-form' : dataPartenza?.hasError('required')}" formControlName="dataPartenza" ></div>
+        <ng-template  *ngIf="dataPartenza?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="dataPartenza?.hasError('dataOrdinata')" class="messaggiWarning" >Le modifiche alle tratte con data<br>odierna devono avere un preavviso<br>di almeno due ore </small>
+        <div class="opzione">
+          <label for="oraTratta">Ora partenza:</label>
+          <input type="time"  class="bottoni" [ngClass]="{'invalid-form' : oraPartenza?.invalid}" [min]="minimoOrario()" id="oraTratta" name="oraTratta" formControlName="oraPartenza"></div>
+        <ng-template  *ngIf="oraPartenza?.hasError('required'); then CampoVuoto"></ng-template>
+        <div class="opzione">
+          <label for="capienzaTratta">Capienza:</label>
+          <input type="number" class="bottoni" [ngClass]="{'invalid-form' : capienza?.invalid}" [min]="1" id="capienzaTratta" name="capienzaTratta" formControlName="capienza"></div>
+        <ng-template  *ngIf="capienza?.hasError('required'); then CampoVuoto"></ng-template>
+
+        <div class="opzione">
+          <label for="postiTratta">Posti disponibili:</label>
+          <input type="number" class="bottoni" [ngClass]="{ 'invalid-form' : postiDisponibili?.invalid}" id="postiTratta" name="postiTratta" formControlName="postiDisponibili"></div>
+        <ng-template  *ngIf="postiDisponibili?.hasError('required'); then CampoVuoto"></ng-template>
+
+        <small *ngIf="postiDisponibili?.hasError('capienzaMinorePosti')" class="messaggiErrore" >I posti disponibili non possono <br> essere maggiori della capienza </small>
+        <div class="opzione">
+          <label for="tipoMezzo">Tipo mezzo:</label>
+          <select id="tipoMezzo" formControlName="tipoMezzo" >
+            <option value="BUS">BUS</option>
+            <option value="TRENO">TRENO</option>
+            <option value="AEREO">AEREO</option>
+          </select>
+        </div>
+        <div class="opzione">
+          <label for="prezzoTratta">Prezzo:</label>
+          <input type="number" class="bottoni" step="0.2" [ngClass]="{ 'invalid-form' : prezzo?.invalid}" id="prezzoTratta" name="prezzoTratta" formControlName="prezzo">  </div>
+        <ng-template  *ngIf="prezzo?.hasError('required'); then CampoVuoto"></ng-template>
+        <div class="opzione">
+          <label for="scontoTratta">Sconto:</label>
+          <input type="number" class="bottoni" step="5" [ngClass]="{ 'invalid-form' : sconto?.invalid}" id="scontoTratta" name="scontoTratta" formControlName="sconto"></div>
+        <ng-template  *ngIf="sconto?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="sconto?.hasError('scontoNonValido')" class="messaggiErrore" >Lo sconto deve essere compreso tra 0 e 100</small>
+        <div class="opzione">
+          <label for="numero_biglietti_scontati">Biglietti scontati:</label>
+          <input type="number" class="bottoni" [ngClass]="{ 'invalid-form' : numero_biglietti_scontati?.invalid}" id="numero_biglietti_scontati" name="numero_biglietti_scontati" formControlName="numero_biglietti_scontati"></div>
+        <ng-template  *ngIf="numero_biglietti_scontati?.hasError('required'); then CampoVuoto"></ng-template>
+        <small *ngIf="numero_biglietti_scontati?.hasError('bigliettiScontatiNonValidi')" class="messaggiErrore" >Il numero di biglietti scontati non <br>può essere maggiore dei posti disponibili</small>
+        <div class="azioni">
+          <button class="confermaModifica" type="submit" [disabled]="formDisabilitato(i)" >Conferma</button>
+          <button class="elimina" type="reset" (click)="escidallaModifica(i)">Annulla</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</div>
+</body>
+<ng-template #CampoVuoto>
+  <small class="messaggiErrore" >Non è possibile lasciare il campo vuoto</small>
+
+</ng-template>

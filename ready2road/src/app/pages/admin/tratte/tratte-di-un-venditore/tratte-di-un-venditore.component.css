@@ -1,0 +1,176 @@
+
+
+
+
+.input{
+  background-color: var(--component-color);
+}
+body{
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  height: auto;
+  min-height: 500px;
+}
+span{
+  font-size: 50px;
+  margin-right: 10%;
+}
+#prezzoTratta{
+
+}
+#scontoTratta{
+
+}
+
+.titleContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#chiudiFinestra{
+  font-size: 50px;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+
+  top: 0;
+  right: 0;
+}
+#tratte {
+justify-content: center;
+  display: flex;
+  flex-direction: row; /* Configura la disposizione in righe */
+  flex-wrap: wrap; /* Avvolgi gli elementi quando la larghezza della riga è esaurita */
+}
+
+.tratta {
+  border: 1px solid #ccc;
+  background-color: var(--background-color);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  min-width: 350px;
+}
+.azioni {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+
+}
+
+button {
+  margin-right: 5px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.modifica {
+  background-color: cornflowerblue;
+  color: var(--text-color);
+}
+.modifica:hover {
+  background-color: #1e88e5;
+}
+
+.elimina {
+  background-color: #f44336;
+  color: var(--text-color);
+}
+.elimina:hover {
+  background-color: #d32f2f;
+}
+.confermaModifica{
+  background-color: #4CAF50;
+  color: var(--text-color);
+}
+.confermaModifica:hover {
+  background-color: #37863b;
+}
+.disabilitato {
+  opacity: 0.5; /* Opacità ridotta per indicare il div disabilitato */
+  pointer-events: none; /* Impedisce l'interazione con gli elementi interni */
+}
+.disabilitato-bottoni{
+  display: none;
+}
+#buttons {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+#buttons input {
+  margin-right: 5px;
+}
+
+
+
+
+
+.nascosto{
+  display: none;
+}
+.datad{
+  background-color: var(--component-color);
+  color: var(--text-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+.bottoni{
+  background-color: var(--component-color);
+  color: var(--text-color);
+
+}
+.opzione {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.opzione input, select{
+  width: 200px;
+  margin-bottom: 5px;
+}
+.confermaModifica[disabled]{
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+.invalid-form{
+  border: 1px solid red;
+}
+.invalid-form:focus{
+  outline: none;
+  box-shadow: 0 0 5px red;
+  border:1px solid red;
+}
+
+.messaggiErrore{
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.messaggiWarning{
+  font-weight: bold;
+  color: orange;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.warning-form{
+  border: 1px solid orange;
+}
+.warning-form:focus{
+  outline: none;
+  box-shadow: 0 0 5px orange;
+  border:1px solid orange;
+}
+
+
