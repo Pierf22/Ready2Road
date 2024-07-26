@@ -1,4 +1,6 @@
 # ✈️ Ready2Road ✈️
+La traccia è disponibile qua: [Traccia Progetto Web Applications](https://github.com/matte18it/Ready2Road/blob/main/A.A.%202023_24%20-%20ModalitaEsame.pdf)
+
 La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono previste 3 tipologie di utenti:
 1. Utente:
    <ul>
@@ -35,8 +37,6 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
  		<li>Username: user</li>
    		<li>Password: user</li>
  	</ul>
-
-La traccia è disponibile qua: [Traccia](https://github.com/matte18it/Ready2Road/blob/main/A.A.%202023_24%20-%20ModalitaEsame.pdf)
 
 # 💾 Database 💾
 <h2>Progettazione Concettuale</h2>
