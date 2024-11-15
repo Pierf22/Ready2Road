@@ -1,0 +1,16 @@
+.immagine{
+  padding: 20px 20px;
+  width: 100%;
+}
+
+.centro{
+  text-align: center;
+  color: var(--text-color);
+}
+
+#btnHome {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  max-height: 50px;
+  max-width: 80px;
+}

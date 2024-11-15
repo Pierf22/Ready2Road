@@ -1,0 +1,416 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 700px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+  text-align: center;
+}
+
+#change {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-color: transparent;
+}
+
+.description {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  color: white;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  box-shadow: 0px 0px 10px rgba(0, 0 ,0, 0.8);
+}
+
+.contForm {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--accent-color);
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.slogan {
+  text-align: left;
+  margin-top: 5%;
+  width: 80%;
+}
+
+#formPr{
+  margin-left: 15px;
+}
+
+.slogan h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.form-line {
+  border: 1px solid var(--text-color);
+  margin: 20px 0;
+}
+
+.sceltaMezzo {
+  text-align: center;
+}
+
+.fa-plane {
+  transform: rotate(315deg);
+}
+
+.select-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.select-container select {
+  width: 100%;
+}
+
+.mezzo {
+  width: 120px;
+  margin-left: 30px;
+  color: var(--text-color);
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  font-size: 18px;
+}
+
+button:hover {
+  color: #DCDCDC;
+}
+
+.andataRitorno {
+  margin-left: 15px;
+  margin-top: 20px;
+  background-color: var(--component-color);
+  width: 20%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+option {
+  border-color: var(--accent-color);
+  background-color: var(--component-color);
+  color: var(--text-color);
+}
+
+.andata {
+  width: 60%;
+  margin-left: 15%;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  color: var(--text-color);
+}
+
+.ritorno {
+  width: 25%;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  color: var(--text-color);
+}
+
+.citta {
+  margin-top: 20px;
+  background-color: var(--component-color);
+  width: 30%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.partenza {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-color);
+  outline: none;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.arrivo {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-color);
+  outline: none;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group button {
+  margin: 0 auto;
+}
+
+.form-select:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Disabilita lo stile di focus di Bootstrap per gli input */
+.form-control:focus, .select2-container--default .select2-selection--single:focus {
+  border-color: #ced4da;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-floating > select + label:after {
+  background: transparent !important;
+}
+
+.form-floating > input + label:after {
+  background: transparent !important;
+}
+
+.form-floating label {
+  color: var(--text-color);
+}
+
+.data {
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: var(--component-color);
+  width: 35%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.dataPartenza {
+  background-color: transparent;
+  color: var(--text-color);
+  border-color: transparent;
+  height: 55px;
+}
+
+.dataRitorno {
+  background-color: transparent;
+  color: var(--text-color);
+  border-color: transparent;
+  height: 55px;
+}
+
+.ricerca {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 5%;
+}
+
+#btnRicerca {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  height: 55px;
+  width: 100%;
+}
+
+.passeggeri{
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 25%;
+  background-color: var(--component-color);
+  border-radius: 10px;
+  height: 100%;
+}
+
+#pass {
+  background-color: transparent;
+  border-color: transparent;
+  height: 55px;
+  color: var(--text-color);
+}
+
+.btnPass {
+  height: 55px;
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-color);
+}
+
+/* Regole personalizzate in base alla dimensione dello schermo */
+@media screen and (min-width: 577px) and (max-width: 1200px) {
+  .mezzo {
+    width: 90px;
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  .description {
+    font-size: 13px;
+  }
+  .description h3{
+    font-size: 18px;
+  }
+  .slogan h1 {
+    font-size: 25px;
+  }
+  .citta {
+    width: 100%;
+  }
+  .data{
+    margin-top: 15px;
+    width: 100%;
+    margin-left: 0;
+  }
+  .andataRitorno{
+    margin-left: 0;
+    width: 40%;
+  }
+  .passeggeri {
+    margin-top: 0;
+    width: 60%;
+    margin-left: 0;
+  }
+  .ricerca {
+    margin-top: 0;
+    width: 35%;
+    margin-left: 5%;
+  }
+  .slogan {
+    width: auto;
+  }
+  #formPr{
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 576px) {
+  .mezzo {
+    width: 90px;
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  .description {
+    font-size: 13px;
+  }
+  .description h3{
+    font-size: 18px;
+  }
+  .slogan h1 {
+    font-size: 19px;
+  }
+  .citta {
+    width: 100%;
+  }
+  .data{
+    margin-top: 15px;
+    width: 100%;
+    margin-left: 0;
+  }
+  .andataRitorno{
+    margin-left: 0;
+    width: 60%;
+  }
+  .passeggeri {
+    margin-top: 0;
+    width: 60%;
+    margin-left: 0;
+  }
+  .ricerca {
+    margin-top: 0;
+    width: 35%;
+    margin-left: 5%;
+  }
+  .slogan {
+    width: auto;
+  }
+  #formPr{
+    margin-left: 0;
+  }
+}
+
+.offerta {
+  background-color: var(--accent-color);
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  width: 700px;
+}
+
+@media screen and (max-width: 576px) {
+  .offerta {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 380px) {
+  .mezzo {
+    width: 70px;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .slogan h1 {
+    font-size: 13px;
+  }
+  .description {
+    font-size: 10px;
+  }
+  .description h3{
+    font-size: 12px;
+  }
+  .citta {
+    width: 100%;
+    font-size: 12px;
+  }
+  .data{
+    margin-top: 15px;
+    width: 100%;
+    margin-left: 0;
+    font-size: 12px;
+  }
+  .form-control {
+    font-size: 12px;
+  }
+  .andataRitorno{
+    margin-left: 0;
+    width: 70%;
+  }
+  .passeggeri {
+    margin-top: 0;
+    width: 60%;
+    margin-left: 0;
+  }
+  .ricerca {
+    margin-top: 0;
+    width: 35%;
+    margin-left: 5%;
+  }
+  .partenza {
+    font-size: 12px;
+  }
+  .arrivo {
+    font-size: 12px;
+  }
+  .ritorno {
+    font-size: 12px;
+  }
+  .andata {
+    font-size: 12px;
+  }
+  .passeggeri {
+    font-size: 12px;
+  }
+  .slogan {
+    width: auto;
+  }
+  #formPr{
+    margin-left: 0;
+  }
+}

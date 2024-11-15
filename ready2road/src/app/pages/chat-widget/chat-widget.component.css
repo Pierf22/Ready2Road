@@ -1,0 +1,254 @@
+body{
+  width: 35vw;
+  min-height:60px;
+  display: flex;
+  justify-content: center;
+
+}
+@media (max-width:770px ) {
+  body{
+    width:100vw;
+  }
+
+
+
+}
+@media (max-height: 500px) {
+  .mostra{
+    height: 100vh !important;
+  }
+  .listaVenditoriAdmin{
+    height: calc(100vh - 110px) !important;
+  }
+  #conversazioni{
+    height: calc(100vh - 130px) !important;
+  }
+  #messaggi{
+    height: calc(100vh - 190px) !important;
+  }
+
+
+}
+
+.titoloContainer:hover{
+  background: var(--primary-color);
+}
+
+.nascondi{
+  display: none;
+}
+.mostra{
+  height: 500px;
+  border-radius: 0;
+}
+.titolo{
+  font-size: 20px;
+  color:var(--text-color);
+  text-align: left;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+.fa-chevron-down, .fa-chevron-up{
+  color: var(--text-color) ;
+
+  font-size: 50px;
+  margin-right: 10px;
+
+}
+
+.titoloContainer{
+  cursor: pointer;
+  width: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+
+}
+#chats{
+  width: 100%;
+
+}
+#selezioneConversazione{
+  color: var(--text-color);
+  text-align: center;
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  background-color: var(--accent-color);
+
+}
+.fa-arrow-left{
+  margin-top: 8px;
+  cursor: pointer;
+}
+.listaVenditoriAdmin{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  overflow-y: auto;
+  max-height: 390px;
+  background-color: var(--background-color);
+  align-items: center;
+}
+
+#split{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 60% 40%;
+
+}
+.avviaChat{
+  background-color: var(--accent-color); /* Bianco */
+  color: var(--text-color);
+  padding: 10px 20px; /* Padding interno del pulsante */
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px; /* Bordo arrotondato */
+  width: 90%;
+
+
+}
+.avviaChat:hover{
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+.seleziona{
+  margin-right: 5px;
+  cursor: pointer;
+}
+input.seleziona{
+  transform: scale(1.5);
+}
+.seleziona:checked{
+  accent-color: var(--accent-color);
+}
+.nomiSoggetti{
+  color: var(--text-color);
+  font-size: 30px;
+  border-bottom: 1px solid var(--shadow-color);
+  padding-bottom: 3px;
+  display: inline-block;
+}
+#iconaAdmin{
+  width: 50%;
+
+}
+#indicazioni{
+  padding: 5%;
+}
+.venditore{
+  font-size: large;
+  color: var(--text-color);
+
+  padding: 3%;
+}
+.conversazioneClickable{
+  color: var(--text-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: large;
+  padding: 5%;
+  margin: 10px;
+  background-color: var(--component-color);
+  cursor: pointer;
+
+}
+.conversazioneClickable:hover{
+  color:  var(--text-color);
+  background-color:  var(--primary-color);
+
+}
+#conversazioneContainer{
+  background-color: var(--background-color);
+  min-height: 100%;
+
+}
+#aggiungiConversazione{
+  background-color: var(--accent-color);
+ border-bottom: var(--shadow-color) solid 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.fa-user-plus{
+  color: var(--text-color);
+  font-size: 50px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+#nomeUtente{
+  font-size: 30px;
+  padding-top: 3%;
+  color: var(--text-color) ;
+}
+#containerTitleChat{
+  display: grid;
+  grid-template-rows: 70% 30%;
+  background-color:var(--accent-color); ;
+}
+#containerNomeFreccia{
+  display: grid;
+  grid-template-columns: 10% 80%;
+  font-size: 30px;
+
+}
+#stato{
+  text-align: center;
+  color: var(--secondary-text-color);
+}
+#nomeInterlocutore{
+  text-align: center;
+  color: var(--text-color);
+}
+.barra-invio{
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+background-color: var(--accent-color) !important;
+
+
+}
+.barra-invio input{
+
+  border: none;
+  border-top: 1px solid var(--shadow-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#messaggi{
+  overflow-y: auto;
+  height: 310px;
+}
+#conversazioni{
+  overflow-y: auto;
+  max-height: 370px;
+  background-color: var(--accent-color);
+}
+
+.fa-trash{
+  color: var(--text-color);
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.bottoneInvio{
+  color: var(--text-color);
+  background-color: var(--primary-color);
+
+}
+.bottoneInvio:hover{
+  background-color: var(--secondary-color);
+}
+
+

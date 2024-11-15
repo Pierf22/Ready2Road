@@ -1,0 +1,49 @@
+<div class="container animate__animated animate__fadeIn" id="contenitorePrincipale">
+  <div id="titolo">
+    <h1 style="color: var(--text-color); text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);"><strong><i class="fa-solid fa-wallet" style="color: var(--primary-color);"></i> Portafoglio di {{ nome }}</strong></h1>
+  </div>
+  <div style="display: flex; width: 100%; color: var(--text-color); margin-top: 20px;" id="primoBlocco">
+    <div id="grafico">
+      <h3 *ngIf="this.wallet != undefined"><i style="color: var(--primary-color);" class="fa-solid fa-money-bill"></i> Saldo Attuale: <strong>{{ this.wallet.saldo }} €</strong></h3>
+      <div style="width: 100%; height: 100%;">
+        <h3 style="margin-top: 5px;"><i class="fa-solid fa-chart-column" style="color: var(--primary-color);"></i> Grafico Movimenti:</h3>
+        <canvas id="saldoChart"></canvas>
+        <div style="width: 100%; text-align: center;">
+          <button class="btn btn-primary btnWallet" style="margin-top: 10px;" (click)="addMoney()" id="addMoney"><i class="fa-solid fa-arrow-up-from-bracket" style="transform: rotate(180deg);"></i> Deposita</button>
+          <button class="btn btn-primary btnWallet" style="margin-left: 30px; margin-top: 10px;" (click)="withdrawMoney()" id="removeMoney"><i class="fa-solid fa-arrow-up-from-bracket"></i> Preleva</button>
+        </div>
+      </div>
+    </div>
+    <div id="carte">
+      <h3><i style="color: var(--primary-color);" class="fa-solid fa-credit-card"></i> Metodi di Pagamento</h3>
+      <div id="creditCard">
+        <div class="contCarta" style="position: absolute; top: 20px; left: 20px; color: white !important;">
+          <h4 id="tipoCarta">Carta di Credito</h4>
+        </div>
+        <div class="contCarta" style="position: absolute; bottom: 0; left: 20px; color: white !important;">
+          <p style="margin: 0;" id="nomeCarta"></p>
+          <p style="margin: 0;" id="numeroCarta"></p>
+          <p style="margin: 0;" id="scadenzaCarta"></p>
+          <p id="cvvCarta"></p>
+        </div>
+      </div>
+      <div style="width: 100%; text-align: center;">
+        <h4 id="erroreMetodiPagamento" style="color: var(--primary-color); display: none;"><strong>Non ci sono metodi di pagamento da visualizzare!</strong></h4>
+        <button class="btn btn-primary btnWallet" style="margin-top: 10px;" (click)="addCard()"><i class="fa-solid fa-plus"></i> Aggiungi</button>
+        <button class="btn btn-primary btnWallet" style="margin-left: 15px; margin-top: 10px;" (click)="deleteCard()" id="btnRimuovi"><i class="fa-solid fa-trash"></i> Rimuovi</button>
+        <button class="btn btn-primary btnWallet" style="margin-left: 15px; margin-top: 10px;" (click)="changeCard()" id="btnCambia"><i class="fa-solid fa-rotate"></i> Cambia</button>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; width: 100%; color: var(--text-color); margin-top: 20px;" id="secondoBlocco">
+    <div id="transazioni">
+      <h3><i style="color: var(--primary-color);" class="fa-solid fa-money-bill-wave"></i> Dettagli Movimenti</h3>
+      <h4 id="erroreMovimenti" style="color: var(--primary-color); display: none;"><strong>Non ci sono movimenti da visualizzare!</strong></h4>
+    </div>
+    <div id="buoni">
+      <h3><i style="color: var(--primary-color);" class="fa-solid fa-gift"></i> Gift Card</h3>
+      <h4 id="erroreBuoni" style="color: var(--primary-color); display: none;"><strong>Non ci sono buoni da visualizzare!</strong></h4>
+    </div>
+  </div>
+  <div style="height: 50px;"></div>
+</div>

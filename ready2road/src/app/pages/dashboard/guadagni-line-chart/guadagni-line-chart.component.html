@@ -1,0 +1,9 @@
+<div id="selezionaGiorniGraficoGuadagni">
+  <div [class.active]="isActive1Day" (click)="active6Days()" id="giorni1" class="selettoriDiGiorni">1 </div>
+  <div [class.active]="isActive5Days" (click)="active31Days()" id="giorni5" class="selettoriDiGiorni"> 5</div>
+  <div [class.active]="isActive10Days" (click)='active365Days()' id="giorni10" class="selettoriDiGiorni">10</div>
+
+</div>
+<div class="chart-container">
+  <canvas id="MyChart2">{{chart}}</canvas>
+</div>

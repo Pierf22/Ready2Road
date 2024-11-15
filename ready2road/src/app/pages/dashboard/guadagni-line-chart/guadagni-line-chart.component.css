@@ -1,0 +1,35 @@
+#MyChart2{
+  min-height: 400px;
+  max-width: 100%;
+}
+
+#selezionaGiorniGraficoGuadagni{
+  gap: 5%;
+  padding: 0 2% 2% 2%;
+}
+.selettoriDiGiorni{
+  display: inline;
+  background-color: var(--component-color);
+  color: var(--text-color);
+  padding: 1% 1% 1% 1%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--shadow-color); /* Ombra */
+
+
+}
+.selettoriDiGiorni.active{
+  background-color: var(--primary-color) ;
+  color: var(--secondary-text-color);
+}
+.selettoriDiGiorni:hover{
+  background-color: var(--primary-color);
+}
+#giorni1{
+  border-radius: 30% 0 0 30%;
+}
+#giorni10{
+  border-radius: 0 30% 30% 0;
+}
+
+
+

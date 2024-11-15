@@ -1,0 +1,64 @@
+<body [ngClass]="{'nascondi':!mostaWidget, 'mostra':mostaWidget && mosta}" >
+<div title="chatta con noi"  class="titoloContainer" *ngIf="!mosta" (click)="mostraChat()">
+  <p class="titolo" >Serve aiuto?    <img *ngIf="conNotifica.includes(true)" width="50" class="notificaNuovoMessaggio" height="50"
+                                          ngSrc="https://img.icons8.com/external-basicons-solid-edtgraphics/50/228BE6/external-New-message-notifications-basicons-solid-edtgraphics-7.png"
+                                          alt="external-New-message-notifications-basicons-solid-edtgraphics-7"/></p>
+  <i class="fa-solid fa-chevron-down"></i> <!--freccia su-->
+</div>
+<div id="chats" *ngIf="mosta">
+  <div class="titoloContainer" (click)="mostraChat()">
+    <p class="titolo" >chatta</p>
+    <i class="fa-solid fa-chevron-up"></i>
+  </div>
+    <div id="conversazioneContainer" *ngIf="(conversazioni.length>0 && !aggiungiConversazione && !mostaSingolaConversazione); else selezionaConversazione" >
+      <div id="aggiungiConversazione"><span id="nomeUtente"> Conversazioni </span><i title="aggiungi conversazione" class="fa-solid fa-user-plus" (click)="mostaAggiungiConversazione()"></i></div>
+      <section id="conversazioni">
+    <div  *ngFor="let conversazione of conversazioni; let i=index">
+      <p title="apri conversazione" class="conversazioneClickable" (click)="mostraConversazione(i)"><span> {{conversazioneService.getNomeAltroPartecipanteConv(utente.getIndirizzoEmail(), conversazione.getNome())}} <img *ngIf="this.conNotifica[i]" width="30" height="30"
+                                                                                                                                                                                                                           ngSrc="https://img.icons8.com/ios-glyphs/60/228BE6/full-stop--v2.png"
+                                                                                                                                                                                                                           alt="full-stop--v2"/></span><i title="elimina conversazione" (click)="eliminaConversazione(conversazione, i)" class="fa-solid fa-trash"></i></p>
+</div>
+      </section>
+    </div>
+  </div>
+<ng-template #selezionaConversazione>
+  <div *ngIf="!mostaSingolaConversazione else SingolaConversazione">
+  <div  id="selezioneConversazione">
+    <i title="torna alle tue chat" class="fa-solid fa-arrow-left" (click)="aggiungiConversazione=false"></i>
+    Con chi vuoi parlare? </div>
+    <form [formGroup]="selezionaUtente" (ngSubmit)="avviaChat()" class="listaVenditoriAdmin" >
+      <div id="split">
+        <section>
+      <span class="nomiSoggetti">Venditori</span>
+      <div class="venditore" *ngFor="let venditore of venditori">
+          <input class="seleziona" formControlName="utenteSelezionato" type="radio" [value]="venditore"  > {{venditore.getNomeSocieta()}} <br>
+    </div></section>
+        <section>
+       <span class="nomiSoggetti">Admin</span>
+        <div class="venditore" *ngFor="let admin of admins">
+          <input class="seleziona" formControlName="utenteSelezionato" type="radio" [value]="admin"  > {{admin.getUsername()}} <br>
+        </div>
+      </section></div><button class="avviaChat" type="submit" >Avvia chat</button></form>
+  </div>
+</ng-template>
+<ng-template #SingolaConversazione>
+  <ngx-spinner  color="var(--primary-color)" size="medium" name="caricamentoMessaggi"  type="ball-spin-clockwise-fade-rotating" style="color: white"><div style="color: var(--text-color)">Caricamento chat in corso...</div></ngx-spinner>
+  <div id="containerTitleChat">
+    <div id="containerNomeFreccia">
+  <i title="torna alle tue chat" class="fa-solid fa-arrow-left" (click)="tornaAListaConversazione()"></i>
+      <span id="nomeInterlocutore" > {{conversazioneService.getNomeAltroPartecipanteConv(utente.getIndirizzoEmail(), conversazioni[conversazioneSelezionata].getNome())}}</span>
+  </div>
+    <small id="stato">{{stato}}</small>
+  </div>
+  <div id="messaggi">
+    <div class="messaggio" *ngFor="let messaggio of messaggi[conversazioneSelezionata]" [ngClass]="{'messaggioMio':messaggio.getMittente()==utente?.getIndirizzoEmail(), 'messaggioAltro':!(messaggio.getMittente()==utente?.getIndirizzoEmail())}">
+      <div class="testo">{{messaggio.getTesto()}}</div>
+      <div class="data">{{conversazioneService.formatData(messaggio.getData())}}</div>
+    </div>
+  </div>
+  <form [formGroup]="invioMessaggio"  class="barra-invio" (ngSubmit)="inviaMessaggio()">
+    <input formControlName="testoMessaggio" placeholder="Scrivi un messaggio..." />
+    <button class="bottoneInvio" type="submit" > <i class="fas fa-paper-plane"></i> </button>
+  </form>
+</ng-template>
+</body>

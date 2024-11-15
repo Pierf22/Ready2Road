@@ -1,0 +1,102 @@
+<div class="container animate__animated animate__fadeIn" id="contenitorePrincipale">
+  <div id="contAvatar">
+    <div class="avatar" [style.background-color]="color">
+      <span>{{ iniziali }}</span>
+    </div>
+
+    <div id="nomeUser" *ngIf="user !== undefined">
+      {{ saluto }} {{ nome }} {{ cognome }}
+    </div>
+
+  </div>
+
+  <div id="corpoPage">
+    <div id="firstContainer">
+      <h4 style="display: flex; align-items: center;">
+        <i class="fa-solid fa-user" style="font-size: 30px; color: var(--secondary-color); margin-right: 10px;"></i>
+        <strong>Account</strong>
+      </h4>
+      <div style="margin-top: 10px;" *ngIf="user !== undefined">
+        <span><strong *ngIf="!seVenditore()">Nome Completo:</strong><strong *ngIf="seVenditore()">Nome Società:</strong> {{ nome }} {{ cognome }}</span>
+      </div>
+      <div style="margin-top: 10px;" *ngIf="user !== undefined">
+        <span><strong>Email:</strong> {{ email }}</span>
+      </div>
+      <div style="margin-top: 10px;" *ngIf="user !== undefined && dataDiNascita !== ''">
+        <span><strong>Data di Nascita:</strong> {{ dataDiNascita }}</span>
+      </div>
+      <div style="margin-top: 10px;" *ngIf="user !== undefined && telefono !== ''">
+        <span><strong>Numero di Telefono:</strong> {{ telefono }}</span>
+      </div>
+      <div style="margin-top: 15px; font-size: 13px;" id="infoFirst">
+        <p>Vuoi modificare i tuoi dati? <strong style="color: var(--primary-color); cursor: pointer;" routerLink="/cambiadatiutente">Clicca qui!</strong></p>
+      </div>
+    </div>
+
+    <div id="secondContainer">
+      <h4 style="display: flex; align-items: center;">
+        <i class="fa-solid fa-ticket" style="font-size: 30px; color: var(--secondary-color); margin-right: 10px;"></i>
+        <strong *ngIf="!seVenditore()">Biglietti Acquistati</strong>
+        <strong *ngIf="seVenditore()">Biglietti Offerti</strong>
+      </h4>
+      <div style="margin-top: 10px;" *ngIf="numeroBiglietti !== undefined">
+        <span *ngIf="!seVenditore()">Hai acquistato <strong style="color: var(--primary-color);"> {{ numeroBiglietti }} </strong> {{ scrittaBiglietti }}</span>
+        <span *ngIf="seVenditore()">Hai messo in vendita <strong style="color: var(--primary-color);"> {{ numeroBiglietti }} </strong> {{ scrittaBiglietti }}</span>
+      </div>
+      <div style="margin-top: 15px; font-size: 13px;" id="infoSecond">
+        <p *ngIf="!seVenditore()">Più info? <strong style="color: var(--primary-color); cursor: pointer;" routerLink="/imieibiglietti">Clicca qui!</strong></p>
+        <p *ngIf="seVenditore()">Vuoi mettere in vendita altri biglietti? <strong style="color: var(--primary-color); cursor: pointer;" routerLink="/caricaservizi">Clicca qui!</strong></p>
+      </div>
+    </div>
+
+    <div id="thirdContainer">
+      <h4 style="display: flex; align-items: center;">
+        <i class="fa-solid fa-wallet" style="font-size: 30px; color: var(--secondary-color); margin-right: 10px;"></i>
+        <strong>Portafoglio</strong>
+      </h4>
+      <div style="margin-top: 10px;" *ngIf="saldo !== undefined">
+        <span>Hai un saldo pari a <strong style="color: var(--primary-color);"> {{ saldo }}</strong> €</span>
+      </div>
+      <div style="margin-top: 10px;" *ngIf="numeroTransazioni !== undefined">
+        <span>Hai effettuato <strong style="color: var(--primary-color);"> {{ numeroTransazioni }} </strong> {{ scrittaTransazione }}</span>
+      </div>
+      <div style="margin-top: 10px;" *ngIf="puntiAcquisto !== undefined && !seVenditore()">
+        <span>Hai <strong style="color: var(--primary-color);"> {{ puntiAcquisto }} </strong> punti acquisto!</span><br><span style="font-size: 12px;" (click)="getBuono()">Vuoi convertire i tuoi punti acquisto in buoni? <a style="color: var(--primary-color); cursor: pointer;" id="richiediBuoni"><strong>Clicca qui!</strong></a></span>
+      </div>
+      <div style="margin-top: 15px; font-size: 13px;" id="infoThird">
+        <p>Più info? <strong style="color: var(--primary-color); cursor: pointer;" routerLink="/portafoglio">Clicca qui!</strong></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="offerta row text" *ngIf="mostraOfferte" align="center">
+    <h2>Un offerta speciale apposta per te!</h2>
+    <div div class="col-6 cardOfferta">
+      <div>
+        <h1>Andata</h1>
+        <div>{{datiOfferte.partenzaPartenza}} - {{datiOfferte.destinazionePartenza}}</div>
+        <div>{{ datiOfferte.dataOraPartenza | date:'yyyy-MM-dd' }}</div>
+        <div>a {{ (datiOfferte.prezzoPartenza - (datiOfferte.prezzoPartenza * datiOfferte.scontoPartenza / 100)) }}€</div>
+        <div>{{datiOfferte.tipoMezzoPartenza}}</div>
+        <div>scontato del 10%<div *ngIf="PartenzaScontata"> + {{datiOfferte.scontoPartenza}}%</div></div>
+        <div>restano solo {{datiOfferte.bigliettiScontatiPartenza}} biglietti!</div>
+      </div>
+    </div>
+    <div div class="col-6 cardOfferta">
+      <div>
+        <h1>Ritorno</h1>
+        <div>{{datiOfferte.partenzaDestinazione}} - {{datiOfferte.destinazioneDestinazione}}</div>
+        <div>{{ datiOfferte.dataOraDestinazione | date:'yyyy-MM-dd' }}</div>
+        <div>a {{ (datiOfferte.prezzoDestinazione - (datiOfferte.prezzoDestinazione * datiOfferte.scontoDestinazione / 100)) }}€</div>
+        <div>{{datiOfferte.tipoMezzoDestinazione}}</div>
+        <div>scontato del 10%<div *ngIf="DestinazioneScontata"> + {{datiOfferte.scontoDestinazione}}%</div></div>
+        <div>restano solo {{datiOfferte.bigliettiScontatiDestinazione}} biglietti!</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="compraBiglietto(datiOfferte.idPartenza, datiOfferte.idDestinazione)">Acquista ora</button>
+  </div>
+
+
+  <div style="height: 100px;"></div>
+</div>

@@ -1,0 +1,42 @@
+<div id="maincontainer">
+  <div class="sfondo row-cols-lg-6">
+    <div class="container-biglietti col-lg-6 col-sm-12 offset-lg-3">
+      <h1 style="color: var(--text-color); margin: 10px;"><span style="color: var(--primary-color);"><i class="fa-solid fa-ticket"></i></span><strong> I miei biglietti</strong></h1>
+      <div class="cardBiglietto text" *ngFor="let biglietto of bigliettoData" (click)="setCollapse(biglietto)">
+
+        <i *ngIf="biglietto.tipoMezzo" [ngClass]="'fa-solid fa-' + getIconName(biglietto.tipoMezzo)"></i>
+        | {{biglietto.partenza.toUpperCase()}} - {{biglietto.destinazione.toUpperCase()}} | {{ biglietto.scadenza | date:'yyyy-MM-dd' }} | {{biglietto.scadenza | date:'HH:mm'}} |
+        <span *ngIf="isScaduto(biglietto.scadenza)" class="errore">SCADUTO</span>
+
+        <i class="fa-solid fa-chevron-down" *ngIf="!biglietto.collapse" style="float: right;"></i>
+        <i class="fa-solid fa-chevron-up" *ngIf="biglietto.collapse" style="float: right"></i>
+
+        <div class="row" *ngIf="biglietto.collapse">
+          <div class="container-sinstro col-md-8 row dati-biglietto">
+            <div class="col colonna-sinistra">
+              <div class="dati-c1"> Nome: {{biglietto.nome}} </div>
+              <div class="dati-c1"> Cognome: {{biglietto.cognome}} </div>
+              <div class="dati-c1"> Codice Fiscale: {{biglietto.codiceFiscale}} </div>
+            </div>
+            <div class="col-auto colonna-centrale">
+              <div class="dati-c1"> {{biglietto.venditore}}</div>
+              <div class="dati-c1"> {{biglietto.id}}</div>
+              <div class="dati-c1"> Posto: {{biglietto.posto}} </div>
+            </div>
+          </div>
+          <div class="col-md-2 colonna-destra">
+            <div class="campo-acquisto" align="center">
+              <button (click)="generatePDF(biglietto)" class="btn btn-primary btn-scarica">Scarica biglietto</button>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <div> Data Acquisto: {{ biglietto.dataAcquisto | date:'yyyy-MM-dd' }} </div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

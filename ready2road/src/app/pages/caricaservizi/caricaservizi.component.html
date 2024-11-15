@@ -1,0 +1,44 @@
+<div class="sfondo row">
+
+  <div class="col-lg-3 colonna-centrale">
+    <div class="mb-3 align-center testo">
+      <h1>Carica una tratta</h1>
+      <p>Quì puoi caricare i servizi che vuoi fornire</p>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <div class="col" align="center"><button (click)="setActiveButton('AEREO')" id="AEREO" class="btn active scelta-mezzo">Aereo</button></div>
+        <div class="col" align="center"><button (click)="setActiveButton('TRENO')"id="TRENO" class="btn scelta-mezzo">Treno</button></div>
+        <div class="col" align="center"><button (click)="setActiveButton('BUS')"id="BUS" class="btn scelta-mezzo">Autobus</button></div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="partenza" class="form-control testo" id="partenza" placeholder="Partenza">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="destinazione" class="form-control testo" id="destinazione" placeholder="Destinazione">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="capienza" class="form-control testo" id="capienza" placeholder="Capienza">
+    </div>
+    <div class="mb-3">
+      <label class="testo" for="dataPartenza">Data e ora di partenza</label>
+      <input type="datetime-local" name="dataPartenza" class="form-control dataPartenza testo" id="dataPartenza" aria-describedby="dataPartenza">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="prezzo" class="form-control testo" id="prezzo" placeholder="Prezzo">
+    </div>
+
+    <!-- Visualizza i campi per le tappe intermedie -->
+    <div *ngIf="varMezzo !== 'AEREO'" class="mb-3">
+      <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" class="mb-3">
+        <input type="text" [(ngModel)]="tappeIntermedie[i]" class="form-control testo" placeholder="Tappa intermedia {{ i + 1 }}">
+      </div>
+    </div>
+
+    <div class="mb-3 align-right">
+      <button id="btn-invio" (click)="inviaForm()" class="invio-btn btn btn-primary pulsante">Invia</button>
+    </div>
+  </div>
+</div>

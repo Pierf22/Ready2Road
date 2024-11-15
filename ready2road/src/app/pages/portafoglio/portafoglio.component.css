@@ -1,0 +1,161 @@
+#contenitorePrincipale {
+  width: 100%;
+  min-height: 700px;
+}
+
+#titolo {
+  width: 100%;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-top: 30px;
+}
+
+#grafico {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 60%;
+  max-height: 600px;
+}
+
+#carte {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-left: 20px;
+  width: 40%;
+  max-height: 600px;
+}
+
+#transazioni {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 60%;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#buoni {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-left: 20px;
+  width: 40%;
+}
+
+.btnWallet, .btnWallet:hover, .btnWallet:focus, .btnWallet:active {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+#creditCard {
+  background-image: url('/assets/walletImage/creditCard.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  padding-top: 64%;
+  position: relative;
+}
+
+@media screen and (min-width: 362px) and (max-width: 991px) {
+  #primoBlocco {
+    flex-direction: column;
+  }
+  #secondoBlocco {
+    flex-direction: column;
+  }
+  #grafico {
+    width: 100%;
+  }
+  #carte {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  #transazioni {
+    width: 100%;
+    margin-top: 20px;
+  }
+  #buoni {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #carte {
+    max-height: 700px;
+  }
+}
+
+@media screen and (min-width: 362px) and (max-width: 393px) {
+  .btnWallet, .btnWallet:hover, .btnWallet:focus, .btnWallet:active {
+    font-size: 12px;
+    margin-left: 5px;
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 361px) {
+  #primoBlocco {
+    flex-direction: column;
+  }
+  #secondoBlocco {
+    flex-direction: column;
+  }
+  #grafico {
+    width: 100%;
+  }
+  #carte {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  #transazioni {
+    width: 100%;
+  }
+  #buoni {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  #titolo h1 {
+    font-size: 18px;
+  }
+  #grafico h3 {
+    font-size: 18px;
+  }
+  #carte h3 {
+    font-size: 18px;
+  }
+  #transazioni h3 {
+    font-size: 18px;
+  }
+  #buoni h3 {
+    font-size: 18px;
+  }
+  .btnWallet, .btnWallet:hover, .btnWallet:focus, .btnWallet:active {
+    font-size: 9px;
+    margin-left: 5px;
+    width: 60px;
+  }
+  .contCarta p {
+    font-size: 10px;
+  }
+  .contCarta h4 {
+    font-size: 12px;
+  }
+}
+

@@ -1,0 +1,185 @@
+
+<body>
+
+
+<ng-container *ngIf="eVenditore=='Utente'">
+  <p class="numeroUtenti">{{this.utenti.length}} Utenti</p>
+</ng-container>
+<ng-container *ngIf="eVenditore=='Venditore'">
+  <p class="numeroUtenti">{{this.venditori.length}} Venditori</p>
+</ng-container>
+<div id="buttonGroupUsers">
+  <div id="selezionaUnTipoDiUtente" class="buttonGroupComponent" (click)="showOptions=!showOptions">
+
+      {{ eVenditore }} <i [ngClass]="{'frecciaSu':showOptions}" class="fa-solid fa-chevron-down frecciaOptions"></i>
+
+    <div *ngIf="showOptions" class="options-container">
+      <label  class="options" (click)=" updateTabella('Utente')">Utente</label>
+      <label  class="options" (click)="updateTabella('Venditore')">Venditore</label>
+    </div>
+  </div>
+
+  <input  id="banButton" type="button" value="Ban" class="buttonGroupComponent" (click)="bannaUtenti()">
+    <input  id="deleteButton" type="button" value="Elimina" class="buttonGroupComponent" (click)="eliminaUtenti()">
+</div>
+
+<table class="tabellaUtenti" >
+  <tr>
+    <th>
+
+      Seleziona
+    </th>
+    <th *ngIf="eVenditore=='Utente'">
+      <div class="thWithImage" (click)="cambiaOrdinamentoNome()">
+        Nome
+        <ng-container *ngIf="ordinamentoNome==null; then doubleArrow else elseBlockNome"></ng-container>
+      </div>
+    </th>
+    <th *ngIf="eVenditore=='Venditore'">
+      <div class="thWithImage" (click)="cambiaOrdinamentoNomeSocieta()">
+        Nome società
+        <ng-container *ngIf="ordinamentoNomeSocieta==null; then doubleArrow else elseBlockNome"></ng-container>
+      </div>
+    </th>
+    <th  *ngIf="eVenditore=='Utente'">
+      <div class="thWithImage" (click)="cambiaOrdinamentoCognome()">
+        Cognome
+        <ng-container *ngIf="ordinamentoCognome==null; then doubleArrow else elseBlockCognome"></ng-container>
+      </div>
+    </th>
+    <th class="colonneDaNasconere">
+      Email
+    </th>
+    <th *ngIf="eVenditore=='Utente'" class="colonneDaNasconere">
+      Numero di telefono
+    </th>
+    <th class="colonneDaNasconere" *ngIf="eVenditore=='Utente'">
+      <div class="thWithImage "  (click)="cambiaOrdinamentoNascita()">
+        Data di nascita
+        <ng-container *ngIf="ordinamentoNascita==null; then doubleArrow else elseBlockNascita"></ng-container>
+      </div>
+
+    </th>
+    <th>
+
+      Modifica
+    </th>
+    <th>
+      <div class="thWithImage "  (click)="cambiaOrdinamentoBan()">
+        Ban
+        <ng-container *ngIf="ordinamentoBan==null; then doubleArrow else elseBlockBan"></ng-container>
+      </div>
+    </th>
+
+  </tr>
+  <ng-container *ngIf="eVenditore=='Utente'">
+  <tr *ngFor="let utente of this.utentiVisualizzati " class="ListofUsers">
+    <td>
+      <ng-container *ngIf="mapUtentiChecked.get(utente)" >
+      <input type="checkbox" class="checkBoxUser" value=""   (change)="    this.mapUtentiChecked.set(utente, false);
+" checked>
+      </ng-container>
+      <ng-container *ngIf="!mapUtentiChecked.get(utente)" >
+        <input type="checkbox"  value=""  (change)="    this.mapUtentiChecked.set(utente, true);
+">
+      </ng-container>
+    </td>
+    <td>
+      {{utente.getNome()}}
+    </td>
+    <td>
+      {{utente.getCognome()}}
+    </td>
+    <td class="colonneDaNasconere">
+      {{utente.getIndirizzoEmail()}}
+    </td>
+    <td class="colonneDaNasconere">
+      {{utente.getNumeroTelefono()}}
+    </td>
+    <td class="colonneDaNasconere">
+      {{ utente.getDataNascita() | date:'dd/MM/yyyy' }}
+    </td>
+    <td (click)="modificaUtente(utente)" class="modificaUtente">
+      modifica
+    </td>
+    <td *ngIf="utente.getBan()">
+      <p class="banp">BAN</p>
+    </td>
+    <td *ngIf="!utente.getBan()">
+    </td>
+
+
+  </tr>
+</ng-container>
+  <ng-container *ngIf="eVenditore=='Venditore'">
+    <tr *ngFor="let venditore of this.venditoriVisualizzati " class="ListofUsers">
+      <td>
+        <ng-container *ngIf="mapVenditoreChecked.get(venditore)" >
+          <input type="checkbox" value="" title="SelectedUser"  (change)="    this.mapVenditoreChecked.set(venditore, false);
+" checked>
+        </ng-container>
+        <ng-container *ngIf="!mapVenditoreChecked.get(venditore)" >
+          <input type="checkbox" value="" title="SelectedUser"  (change)="    this.mapVenditoreChecked.set(venditore, true);
+">
+        </ng-container>
+      </td>
+      <td>
+        {{venditore.getNomeSocieta()}}
+      </td>
+      <td class="colonneDaNasconere">
+        {{venditore.getIndirizzoEmail()}}
+      </td>
+      <td (click)="modificaVenditore(venditore)" class="modificaUtente">
+        modifica
+      </td>
+      <td *ngIf="venditore.getBan()">
+        <p class="banp">BAN</p>
+      </td>
+      <td *ngIf="!venditore.getBan()">
+      </td>
+    </tr>
+  </ng-container>
+</table>
+<button class="caricaAltro" [class.disabled]=" disabilitaButtoneCaricaAltro()" (click)="caricaUtenti()">Carica altro</button>
+<ng-template #upArrow>
+  <i class="fa-solid fa-arrow-up ordinamentoImage"></i>
+
+</ng-template>
+<ng-template #downArrow>
+  <i class="fa-solid fa-arrow-down ordinamentoImage"></i>
+
+</ng-template>
+<ng-template #doubleArrow>
+  <i class="fa-solid fa-arrows-up-down ordinamentoImage"></i></ng-template>
+<ng-template #elseBlockNome>
+  <ng-container *ngIf="ordinamentoNome; then downArrow else upArrow">
+
+  </ng-container>
+
+</ng-template>
+<ng-template #elseBlockBan>
+  <ng-container *ngIf="ordinamentoBan; then downArrow else upArrow">
+
+  </ng-container>
+
+</ng-template>
+<ng-template #elseBlockCognome>
+  <ng-container *ngIf="ordinamentoCognome; then downArrow else upArrow">
+
+  </ng-container>
+
+</ng-template>
+<ng-template #elseBlockNascita>
+  <ng-container *ngIf="ordinamentoNascita; then downArrow else upArrow">
+
+  </ng-container>
+
+</ng-template>
+
+
+
+
+
+</body>
+
+

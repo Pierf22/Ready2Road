@@ -1,0 +1,169 @@
+.avatar {
+  width: 4rem;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.avatar span {
+  font-size: 18px;
+  line-height: 4rem;
+  font-weight: bold;
+  color: white;
+}
+
+#contenitorePrincipale {
+  width: 100%;
+  min-height: 500px;
+}
+
+#contAvatar {
+  display: flex;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  padding: 15px;
+}
+
+#nomeUser {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+}
+
+#corpoPage {
+  color: var(--text-color);
+  display: flex;
+  margin-top: 30px;
+}
+
+#firstContainer{
+  padding: 15px;
+  width: 30%;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+#secondContainer{
+  padding: 15px;
+  width: 30%;
+  margin-left: 5%;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+#thirdContainer{
+  padding: 15px;
+  width: 30%;
+  margin-left: 5%;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 991px) {
+  #firstContainer h4{
+    font-size: 15px;
+  }
+  #firstContainer i{
+    font-size: 20px !important;
+  }
+  #firstContainer span{
+    font-size: 12px;
+  }
+  #infoFirst {
+    font-size: 10px !important;
+  }
+
+  #secondContainer h4{
+    font-size: 15px;
+  }
+  #secondContainer i{
+    font-size: 20px !important;
+  }
+  #secondContainer span{
+    font-size: 12px;
+  }
+  #infoSecond {
+    font-size: 10px !important;
+  }
+
+  #thirdContainer h4{
+    font-size: 15px;
+  }
+  #thirdContainer i{
+    font-size: 20px !important;
+  }
+  #thirdContainer span{
+    font-size: 12px;
+  }
+  #infoThird {
+    font-size: 10px !important;
+  }
+  #nomeUser {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #corpoPage {
+    flex-direction: column;
+  }
+
+  #nomeUser {
+    font-size: 25px;
+  }
+
+  #firstContainer, #secondContainer, #thirdContainer {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+.offerta {
+  background-color: var(--accent-color);
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.cardOfferta {
+  background-color: var(--component-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2%;
+  width: 46%;
+}
+
+.text{
+    color: var(--text-color);
+}
+
+@media screen and (min-width: 453px) and (max-width: 519px) {
+  #nomeUser {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 453px) {
+  .avatar{
+    display: none;
+  }
+
+  #nomeUser {
+    font-size: 20px;
+  }
+}
+
+
+

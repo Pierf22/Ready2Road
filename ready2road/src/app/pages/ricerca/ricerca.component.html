@@ -1,0 +1,101 @@
+<div class="container">
+  <!--
+  <div id="title" style="margin-top: 10px; margin-left: 10px;">
+    <h1><span style="color: var(--primary-color);"><i class="fa-solid fa-map-location-dot"></i></span> Biglietti {{ testoTitolo }}</h1>
+
+  </div>
+    -->
+  <div class="mappaTratta" id="map">
+    <!-- API mappa del percorso -->
+  </div>
+
+  <div class="tratte">
+    <div class="filtriOrdinamento"> <strong> Ordina per </strong>
+      <select (change)="ordinaTratte($event)">
+        <option></option>
+        <option> ora partenza </option>
+        <option> prezzo </option>
+        <option> posti disponibili </option>
+        <option> posti totali </option>
+      </select>
+    </div>
+    <div id="title" style="margin-top: 10px; margin-left: 10px;">
+      <h1  style="color: var(--text-color);"><span style="color: var(--primary-color);"><i class="fa-solid fa-map-location-dot"></i></span> Biglietti {{ testoTitolo }}</h1>
+    </div>
+    <br>
+    <div class="cardTratta" *ngFor="let tratta of this.datiRicerca[0]" (click)="setCollapse(tratta)">
+      <i  [ngClass]="'fa-solid fa-' + getIconName(tratta.tipoMezzo)"></i>
+      <i class="fa-solid fa-chevron-down" *ngIf="!tratta.collapse" style="float: right;"></i>
+      <i class="fa-solid fa-chevron-up" *ngIf="tratta.collapse" style="float: right"></i>
+
+      <span style="float: right; margin-right: 10px;"><strong>{{ tratta.prezzo }} €</strong></span>
+
+      <span style="margin-left: 10px">
+        <strong> {{ getOraPartenza(tratta.dataOra) }} {{tratta.partenza.toUpperCase()}} </strong>
+        <i class="fa-solid fa-arrow-right" ></i>
+        <strong> {{tratta.destinazione.toUpperCase()}} {{ getOraArrivo(tratta.dataOra) }} </strong>
+      </span>
+
+      <div class="dettagli" *ngIf="tratta.collapse">
+        <div class="info">
+          <p> {{ getData(tratta.dataOra) }} </p>
+          <p>{{tratta.tipoMezzo}} {{ tratta.venditore }} {{tratta.idTratta}} </p>
+          <p> Posti ancora disponibili: {{tratta.postiDisponibili}}/{{tratta.capienza}} </p>
+          <button (click)="acquista(tratta)" id="acquista"> Acquista </button>
+        </div>
+        <div class="graficoOrari">
+          <strong> {{ getOraPartenza(tratta.dataOra) }} </strong>
+          <i class="fa-regular fa-circle"></i><br>
+          <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+          <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+          {{ getDurata() }}
+          <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+          <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+          <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+          <strong> {{ getOraArrivo(tratta.dataOra) }} </strong>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div *ngIf="this.datiRicerca.length==2">
+      <br>
+      <div class="cardTratta" *ngFor="let tratta of this.datiRicerca[1]" (click)="setCollapse(tratta)">
+        <i  [ngClass]="'fa-solid fa-' + getIconName(tratta.tipoMezzo)"></i>
+        <i class="fa-solid fa-chevron-down" *ngIf="!tratta.collapse" style="float: right;"></i>
+        <i class="fa-solid fa-chevron-up" *ngIf="tratta.collapse" style="float: right"></i>
+
+        <span style="float: right; margin-right: 10px;"><strong>{{ tratta.prezzo }} €</strong></span>
+
+        <span style="margin-left: 10px">
+        <strong> {{ getOraPartenza(tratta.dataOra) }} {{tratta.partenza.toUpperCase()}} </strong>
+        <i class="fa-solid fa-arrow-right" ></i>
+        <strong> {{tratta.destinazione.toUpperCase()}} {{ getOraArrivo(tratta.dataOra) }} </strong>
+      </span>
+
+        <div class="dettagli" *ngIf="tratta.collapse">
+          <div class="info">
+            <p> {{ getData(tratta.dataOra) }} </p>
+            <p>{{tratta.tipoMezzo}} {{ tratta.id }} {{tratta.venditore}} </p>
+            <p> Posti ancora disponibili: {{tratta.postiDisponibili}}/{{tratta.capienza}} </p>
+            <button (click)="acquista(tratta)"> Acquista </button>
+          </div>
+          <div class="graficoOrari">
+            <strong> {{ getOraPartenza(tratta.dataOra) }} </strong>
+            <i class="fa-regular fa-circle"></i><br>
+            <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+            <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+            {{ getDurata() }}
+            <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+            <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+            <i class="fa-solid fa-minus" style="transform: rotate(90deg)"></i><br>
+            <strong> {{ getOraArrivo(tratta.dataOra) }} </strong>
+            <i class="fa-solid fa-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <br>
+  </div>
+</div>

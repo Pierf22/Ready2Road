@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  color: #fff;
+  height: 100%;
+}
+
+#acquista {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.filtriOrdinamento {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  float: right;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.filtriOrdinamento:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.mappaTratta {
+  position: absolute;
+  /*top: 130px;*/
+  flex: 1;
+  margin: 10px;
+  width: 70vh;
+  height: 85vh;
+  border-radius: 16px;
+}
+
+.tratte {
+  flex: 2;
+  margin-left: 75vh;
+}
+
+.cardTratta {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.cardTratta:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); /* Aumenta l'ombra */
+}
+
+.cardTratta>div {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  padding: 10px;
+  border-radius: 8px;
+}
+.cardTratta button {
+  background-color: #3498db;
+  transition: background-color 0.3s;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cardTratta button:hover {
+  background-color: #2980b9;
+}
+
+.dettagli {
+  padding-top: 10px;
+  display: flex;
+}
+
+.graficoOrari {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mappaTratta {
+    height: auto;
+    width: auto;
+  }
+
+  .tratte {
+    margin-left: 0;
+    width: 100%;
+  }
+}

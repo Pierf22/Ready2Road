@@ -1,0 +1,14 @@
+<div class="cardTratta text" *ngFor="let tratta of tratte">
+  {{tratta.partenza}} - {{tratta.destinazione}} -  Capienza: {{tratta.capienza}} - Posti disponibili: {{tratta.posti_disponibili}} - Prezzo: {{tratta.prezzo}}€ - Data e ora: {{tratta.data_ora | date: 'dd/MM/yyyy HH:mm'}}
+  <div class="row">
+    <div class="form-group col-2">
+      <label for="postiScontati">Posti Scontati</label>
+      <input type="number" class="form-control" id="postiScontati" [(ngModel)]="tratta.biglietti_scontati">
+    </div>
+    <div class="form-group col-2">
+      <label for="scontoPercentuale">Sconto %</label>
+      <input type="number" class="form-control" id="scontoPercentuale" [(ngModel)]="tratta.sconto">
+    </div>
+    <button class="btn btn-primary col-2" (click)="inviaModifica(tratta, tratta.id)">Invia Modifiche</button>
+  </div>
+</div>
