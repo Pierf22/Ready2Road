@@ -38,6 +38,13 @@ La biglietteria permette di acquistare biglietti di autobus, treni, aerei. Sono 
    		<li>Password: user</li>
  	</ul>
 
+# 📼 Demo Video 📼
+<div align="center">
+  <a href="https://youtu.be/b5ANB3IG40c">
+    <img src="https://img.youtube.com/vi/b5ANB3IG40c/0.jpg" alt="Guarda il video su YouTube" width="600">
+  </a>
+</div>
+
 # 💾 Database 💾
 <h2>Progettazione Concettuale</h2>
 
