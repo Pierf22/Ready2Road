@@ -1,0 +1,81 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.sfondo{
+    background-image: url("../images/canyon.png");
+    background-size: cover;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.colonna-centrale {
+    padding-top: 10px;
+    background-color: var(--background-color); /* Colore di sfondo grigio chiaro */
+    border-radius: 10px;
+}
+
+.form-control{
+    background-color: var(--accent-color) !important;
+    border: transparent !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border: none !important
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.pulsante{
+    balckground-color: var(--primary-color) !important;
+}
+
+.pulsante:hover{
+    background-color: var(--secondary-color) !important;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.pulsanteTema{
+    border-radius: 100px !important;
+    border-width: 0px;
+    background-color: white !important;
+    font-size: 24px;
+    margin-left: 95%;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.error-message {
+    color: red;
+    display: none;
+}
+
+.errorBorder {
+    border-color: red !important;
+}
+
+::placeholder, .testo{
+    color: var(--text-color) !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(var(--tema-invert)); /* Inverti i colori, sostituisci con il colore desiderato */
+}
+
+.theme-switch-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ready2Road</title>
+    <!-- Tema -->
+    <link id="theme-style" href="css/lightStyle.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Meta tag per il responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/login.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Icona Sito -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+    <!-- Contenitore principale -->
+    <div class="sfondo animate__animated animate__fadeIn">
+
+        <div class="d-flex justify-content-end" style="margin-top: 10px; width: calc(100% - 3%); align-items: flex-end;">
+            <div class="theme" id="theme">
+                <button type="button" class="btn acceso" id="lightTheme"><i class="fa-solid fa-sun"></i></button>
+                <button type="button" class="btn spento" id="darkTheme"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+
+        <div class="container login col-lg-4" id="loginContainer" th:style="${param.admin != null ? 'margin-top: 100px;' : 'margin-top: 20px;'}">
+
+            <!-- Form di login -->
+            <form action="loginUserServlet" method="post">
+
+                <!-- Scritta Bentornato -->
+                <div class="col" style="text-align: left;">
+                    <strong><h2 th:text="${param.admin != null ? 'Bentoranto Admin!' : 'Bentornato!'}"></h2></strong>
+                </div>
+
+                <!-- Campo email -->
+                <div class="col" style="text-align: left;">
+                    <label class="form-label" th:text="${param.admin != null ? 'Username' : 'Email'}"></label>
+                </div>
+                <div class="col">
+                    <input th:if="${param.admin}" type="text" th:value="${username}" class="form-control blackPlaceholder" placeholder="yourUsername" name="username" id="username" required>
+                    <input th:unless="${param.admin}" type="email" th:value="${email}" class="form-control blackPlaceholder" placeholder="yourEmail@example.com" name="email" id="email" required>
+                </div>
+
+                <!-- Campo password -->
+                <div class="col" style="text-align: left; margin-top: 20px;">
+                    <label class="form-label">Password</label>
+                </div>
+                <div class="col input-group">
+                    <input type="password" class="form-control blackPlaceholder" placeholder="yourPassword" name="password" id="password" required>
+                    <button class="input-group-text" id="viewP"><i class="fa-solid fa-eye" id="eye"></i></button>
+                </div>
+
+                <!-- Link password dimenticata -->
+                <div class="col" style="font-size: 12px; margin-top: 5px; text-align: left;" th:unless="${param.admin}">
+                    Password dimenticata? <span id="recoveryPassword" onClick="recoveryPassword()">Reimpostala ora!</span>
+                </div>
+
+                <!-- Campo Captcha -->
+                <div th:unless="${param.admin}">
+                    <div class="col" style="text-align: left; margin-top: 20px;">
+                        <label class="form-label">Captcha</label>
+                    </div>
+                    <div class="col">
+                        <div id="captchaContainer">
+                            <label id="captchaText" th:text="${captcha}"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control blackPlaceholder" placeholder="Inserisci il codice mostrato sopra" name="captcha" id="textC" required>
+                    </div>
+                </div>
+
+                <!-- Checkbox Venditore -->
+                <div class="col" style="margin-top: 20px; text-align: left;" th:unless="${param.admin}">
+                    <input class="form-check-input" type="checkbox" value="vend" id="checkVenditore" name="checkV">
+                    <label class="form-check-label" for="checkVenditore">Accedi come venditore</label>
+                </div>
+
+                <!-- Bottone di login -->
+                <div class="col" style="text-align: center;">
+                    <input type="submit" id="accediButton" value="Accedi" class="btn btn-primary">
+                    <button onClick="window.location.href='http://localhost:8080/login'" th:if="${param.admin}" id="nonAdminButton" class="btn btn-primary"><i class="fa-solid fa-user"></i></button>
+                    <button onClick="window.location.href='http://localhost:8080/login?admin=true'" th:unless="${param.admin}" id="adminbutton" class="btn btn-primary"><i class="fa-solid fa-user-tie"></i></button>
+                </div>
+            </form>
+
+            <!-- Link al form di registrazione -->
+            <div class="col" style="font-size: 14px; margin-top: 10px; text-align: center;">
+                Non hai un account? <a href="register.html" id="linkRegistrazione">Registrati!</a>
+            </div>
+
+        </div>
+
+        <!-- Contenitore vuoto per lasciare un pò di spazio sotto -->
+        <div style="height: 100px;" id="emptyContainer"></div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Script gestione login -->
+    <script src="../js/loginScript/manageCaptcha.js"></script>
+    <script src="../js/loginScript/loginThemeScript.js"></script>
+    <script src="../js/loginScript/managePasswordLogin.js"></script>
+    <script src="../js/loginScript/errorLogin.js"></script>
+    <script src="../js/loginScript/recoveryPassword.js"></script>
+
+</body>
+</html>
